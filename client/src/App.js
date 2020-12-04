@@ -1,21 +1,40 @@
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/Login/Login"
-import Signup from "./pages/Signup"
+// import Login from "./components/Login/Login"
+// import Signup from "./pages/Signup"
+import Home from "./pages/Home"
+import EMS from "./pages/EMS"
+import Hospital from "./pages/Hospital"
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path={["/", "/login"]}>
+    <div
+      style={{
+        backgroundColor: "#003249",
+        height: "100vh"
+      }}
+    >
+      <Router>
+        <Switch>
+          <Route exact path={"/"}>
+            <Home />
+          </Route>
+          <Route exact path={"/ems"}>
+            <EMS/>
+          </Route>
+          <Route exact path = {"/hospital"}>
+            <Hospital/>
+          </Route>
+          {/* <Route exact path={["/", "/login"]}>
           <Login />
         </Route>
         <Route path="/signup">
           <Signup />
-        </Route>
-      </Switch>
-    </Router>
+        </Route> */}
+        </Switch>
+      </Router>
+    </div>
 
     // <div className="App">
     //   <header className="App-header">
