@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home"
 import EMS from "./pages/EMS"
 import Hospital from "./pages/Hospital"
+import NewPatient from './components/NewPatient/NewPatient';
+import CurrentPatient from "./pages/CurrentPatient"
 
 function App() {
   return (
@@ -22,6 +24,12 @@ function App() {
           </Route>
           <Route exact path={"/ems"}>
             <EMS/>
+          </Route>
+          <Route path={"/new"}>
+            <NewPatient/>
+          </Route>
+          <Route path={"/:id"}>
+            <CurrentPatient/>
           </Route>
           <Route exact path = {"/hospital"}>
             <Hospital/>

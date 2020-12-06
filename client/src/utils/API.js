@@ -10,8 +10,18 @@ export default {
         return axios.get("/api/user/login", loginCredentials)
     },
 
-    foo: function(bar) {
-        // console.log(bar)
-        return axios.post("/api/user/newroute", bar)
+    createPatient: function (PtInitInfo) {
+        return axios.post("/api/patients/new", PtInitInfo)
+    },
+
+    findById: function(id) {
+        // console.log(id)
+        // let idString = id.toString()
+        return axios.get("/api/patients/id", {params: {id}})
     }
+
+    // findMostRecentPatient: function () {
+    //     return axios.get("/api/patients/recent")
+        
+    // }
 }
