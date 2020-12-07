@@ -1,3 +1,4 @@
+const { func } = require("prop-types")
 const db = require("../models")
 
 module.exports = {
@@ -11,29 +12,40 @@ module.exports = {
     },
 
     findPtById: function (req, res) {
-        // console.log(req.query.id)
+        // console.log("here")
+        // console.log(req.params)
         db.Patient
-            .findById(req.query.id)
+            .findById(req.params.id)
             .then(patient => {
                 // console.log(patient)
                 return res.json(patient)
             })
     },
 
-    findByMostRecent: function (req, res) {
+    updateById: function (req, res) {
+        // console.log("here")
+        console.log(req.params.id)
+        console.log(req.body)
         db.Patient
-            .find({}, "_id")
-            .sort("-createdAt")
-            .limit(1)
-            .exec(function (req, res) {
-                // return res.json()
-                console.log(res)
-            })
-        // .find({},{ sort("-createdAt")},{limit:1}, function(req,res) {
-        //     console.log(res)
-        // })
-        // .then(dbModel => res.json(dbModel))
-        // .then(console.log(res))
+            .updateOne({ _id: req.params.id }, {$set:{new_field:"test"}}, {multi:true})
+            .then(console.log("done!"))
 
     }
+
+    // findByMostRecent: function (req, res) {
+    //     db.Patient
+    //         .find({}, "_id")
+    //         .sort("-createdAt")
+    //         .limit(1)
+    //         .exec(function (req, res) {
+    //             // return res.json()
+    //             console.log(res)
+    //         })
+    // .find({},{ sort("-createdAt")},{limit:1}, function(req,res) {
+    //     console.log(res)
+    // })
+    // .then(dbModel => res.json(dbModel))
+    // .then(console.log(res))
+
+    // }
 }

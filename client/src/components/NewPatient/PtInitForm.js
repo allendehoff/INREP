@@ -19,7 +19,7 @@ function PtInitForm(props) {
     }
 
     function handleReroute(id) {
-        history.push("/id:" + id)
+        history.push(id)
     }
 
     function handleSubmit(event) {

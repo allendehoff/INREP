@@ -17,7 +17,13 @@ export default {
     findById: function(id) {
         // console.log(id)
         // let idString = id.toString()
-        return axios.get("/api/patients/id", {params: {id}})
+        return axios.get("/api/patients/" + id)
+        // return axios.get("/api/patients/id", {params: {id}})
+    },
+
+    updateById: function(id, update) {
+        // console.log("here")
+        return axios.put("/api/patients/"+ id, update)
     }
 
     // findMostRecentPatient: function () {
