@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const patientsController = require("../../controllers/patientsController")
 
+router.route("/")
+    .get(patientsController.findSix)
+
 router.route("/new")
     .post(patientsController.newPatient)
 

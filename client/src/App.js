@@ -28,11 +28,11 @@ function App() {
           <Route path={"/new"}>
             <NewPatient/>
           </Route>
-          <Route path={"/:id"}>
-            <CurrentPatient/>
-          </Route>
           <Route exact path = {"/hospital"}>
             <Hospital/>
+          </Route>
+          <Route exact path={"/patients/:id"}>
+            <CurrentPatient/>
           </Route>
           {/* <Route exact path={["/", "/login"]}>
           <Login />
