@@ -23,43 +23,21 @@ module.exports = {
             })
     },
 
-    updateById: function (req, res) {
+    updateVitals: function (req, res) {
         const id = mongoose.Types.ObjectId(req.params.id);
-        // console.log(id)
-        // console.log("here")
-        console.log(req.params.id)
-        console.log(req.body)
         try {
             db.Patient
-                .findByIdAndUpdate({ _id: id }, { $push:{vitals: req.body} }, {new:true}, (err, result) => {
+                .findByIdAndUpdate({ _id: id }, { $push: { vitals: req.body } }, { new: true }, (err, result) => {
                     if (err) { console.log(err) }
                     else { console.log(result); res.send(result) }
                 })
         } catch (err) {
             console.log("ERR:".err)
         }
-        // db.Patient.aggregate([
-        //     { $match: { _id: req.params.id } },
-        //     { $addFields: { new_field: "test" } }
-        // ])
-        //     .then(console.log("done"))
-
-        // db.Patient
-        //     .findOneAndUpdate({ _id: id}, { new_field: "test" }
-        //     //  function(err,pt) {
-        //     //     if (err) console.log(err)
-        //     //     if (pt) (patient => {
-        //     //         console.log(patient)
-        //     //         // return res.json(patient)
-        //     //     })
-        //     // }
-        //     )
-        //     .then(patient => {
-        //         console.log(patient)
-        //         // return res.json(patient)
-        //     })
-        // .exec(console.log("done!"))
-
+        // console.log(id)
+        // console.log("here")
+        // console.log(req.params.id)
+        // console.log(req.body)
     },
 
     findSix: function (req, res) {

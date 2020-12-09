@@ -4,16 +4,28 @@ import { Form, Container, Row, Col, Button, ListGroup, ListGroupItem } from "rea
 import Card from "react-bootstrap/Card"
 import Moment from 'react-moment';
 import 'moment-timezone';
-
+import VitalsForm from "../components/Vitals/VitalsForm"
+import NewVitals from "../components/Vitals/NewVitals"
 
 import { useParams } from "react-router-dom"
 import API from "../utils/API"
+
+const dayjs = require("dayjs")
 
 
 function CurrentPatient() {
     const [entries, setEntries] = useState(1)
 
     const [ptInfo, setPtInfo] = useState({})
+
+    const blankVitals = {
+        time: "notime",
+        HR: "Not Reported",
+        RR: "Not Reported",
+        BPs: "Not Reported",
+        BPd: "Not Reported",
+        oxygen: "Not Reported",
+    }
 
     const [vitals, setVitals] = useState({})
 
@@ -65,13 +77,20 @@ function CurrentPatient() {
         setVitals({ ...vitals, [name]: value })
     };
 
+    function initVitals() {
+        setVitals({...vitals, time:dayjs().format("HH:mm:ss")})
+    }
+
     function handleVitalsSubmit(event) {
-        event.preventDefault()
-        API.updateById(id, vitals)
+        event.preventDefault();
+        if (vitals.HR) {
+            API.updateVitals(id, vitals)
+                .then(setVitals(blankVitals))
+        }
+        // .exec(loadById(id))
         // console.log(vitals)
         // console.log("here")
     }
-
 
     return (
         <Container>
@@ -83,65 +102,14 @@ function CurrentPatient() {
                 <Card>
                     <Card.Header>New Vitals</Card.Header>
                     <Card.Body>
-                        <Form onSubmit={handleVitalsSubmit}>
-                            <Form.Group>
-                                <Form.Label>Heart Rate</Form.Label>
-                                <Form.Control
-                                    name="HR"
-                                    placeholder="Heart Rate"
-                                    type="number"
-                                    onChange={handleVitalsInput}></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Respiratory Rate</Form.Label>
-                                <Form.Control
-                                    name="RR"
-                                    placeholder="Respiratory Rate"
-                                    type="number"
-                                    onChange={handleVitalsInput}></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>BP Systolic</Form.Label>
-                                <Form.Control
-                                    name="BPs"
-                                    placeholder="Systolic"
-                                    type="number"
-                                    onChange={handleVitalsInput}></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>BP Diastolic</Form.Label>
-                                <Form.Control
-                                    name="BPd"
-                                    placeholder="Diastolic"
-                                    type="number"
-                                    onChange={handleVitalsInput}></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Oxygen Saturation</Form.Label>
-                                <Form.Control
-                                    name="oxygen"
-                                    placeholder="O2 sat"
-                                    type="number"
-                                    onChange={handleVitalsInput}></Form.Control>
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
-                        </Form>
+                        {vitals.time? (
+                            <VitalsForm onChange={handleVitalsInput} onSubmit={handleVitalsSubmit}/>
+                        ): (
+                            <NewVitals onClick={initVitals}/>
+                        )}
+                        
                     </Card.Body>
                 </Card>
-                {/* <Card>
-                    <Card.Header>New Message</Card.Header>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Enter your message to update pt report:</Form.Label>
-                            <Form.Control
-                                name="newMessage"
-                                type="text"
-                                onChange={handleInputChange} />
-                        </Form.Group>
-                    </Form>
-                </Card> */}
             </Row>
             <Row className="justify-content-center" style={{ paddingTop: "1rem" }}>
                 {ptInfo.data ? (

@@ -9,7 +9,9 @@ router.route("/new")
 
 router.route("/:id")
     .get(patientsController.findPtById)
-    .put(patientsController.updateById)
+
+router.route("/vitals/:id")
+    .put(patientsController.updateVitals)
     
 // router.route("/update")
 
