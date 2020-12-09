@@ -1,4 +1,3 @@
-const { timeStamp } = require("console");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -7,10 +6,17 @@ const patientSchema = new Schema({
     ETA: { type: String, },
     // type: { type: String, required: true },
     criticalWarn: { type: String, required: false },
-    // vitals: { type: String, required: true }
+    vitals: { type: Array}
 },
 {timestamps:true});
 
 const Patient = mongoose.model("Patient", patientSchema);
+
+// const vitalsSchema = new Schema({
+//     HR: {type:Number},
+//     RR: {type:Number},
+//     BPsys:{type:Number},
+//     BPdi
+// })
 
 module.exports = Patient;

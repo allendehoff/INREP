@@ -29,16 +29,27 @@ function Home() {
             <Card >
                 <Card.Header><h2>To begin, select what type of user you are:</h2></Card.Header>
                 <Card.Body >
-                    {/* <button className="btn"> */}
-                    <a
+                    <Card.Link
+                        className="btn btn-dark"
+                        href="/ems"
+                        >
+                            <h4>EMS Provider</h4>
+                    </Card.Link>
+                    <Card.Link
+                        className="btn btn-dark"
+                        href="/hospital"
+                        >
+                            <h4>Hospital</h4>
+                    </Card.Link>
+                    {/* <a
                         className="btn btn-dark"
                         href="/ems"
                     ><h4>EMS Provider</h4></a>
-                    {/* </button> */}
                     <a
                         className="btn btn-dark"
                         href="/hospital"
-                    ><h4>Hospital</h4></a>
+                    ><h4>Hospital</h4>
+                    </a> */}
                 </Card.Body>
             </Card>
         </div>

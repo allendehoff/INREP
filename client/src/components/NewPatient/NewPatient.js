@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import {Card,Container, Row, Col} from "react-bootstrap/"
+import { Card, Container, Row, Col } from "react-bootstrap/"
+// import { Card } from "@material-ui/core"
 // import API from "../../utils/API";
 import Welcome from "../../components/Welcome/Welcome"
 import NewPtButton from "./NewPtButton"
@@ -49,7 +50,7 @@ function NewPatient(props) {
                     <h1>New patient</h1>
                 </Card.Header>
                 <Card.Body>
-                    <PtInitForm/>
+                    <PtInitForm />
                 </Card.Body>
                 <a
                     className="btn btn-dark"

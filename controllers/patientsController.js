@@ -25,13 +25,19 @@ module.exports = {
 
     updateById: function (req, res) {
         const id = mongoose.Types.ObjectId(req.params.id);
-        console.log(id)
+        // console.log(id)
         // console.log("here")
         console.log(req.params.id)
         console.log(req.body)
-
-        db.Patient
-            .findByIdAndUpdate({ id }, { $addFields: { new_field: "test" } })
+        try {
+            db.Patient
+                .findByIdAndUpdate({ _id: id }, { $push:{vitals: req.body} }, {new:true}, (err, result) => {
+                    if (err) { console.log(err) }
+                    else { console.log(result); res.send(result) }
+                })
+        } catch (err) {
+            console.log("ERR:".err)
+        }
         // db.Patient.aggregate([
         //     { $match: { _id: req.params.id } },
         //     { $addFields: { new_field: "test" } }
@@ -59,8 +65,9 @@ module.exports = {
     findSix: function (req, res) {
         db.Patient
             .find(req.query)
+            .limit(6)
             .sort({ createdAt: -1 })
-            .then(patients => 
+            .then(patients =>
                 // console.log(patients)
                 res.json(patients)
             )
