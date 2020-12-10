@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { Container, Row, Col, Card, CardDeck } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import Welcome from "../components/Welcome/Welcome"
+import PatientCard from "../components/PatientCard/PatientCard"
 import API from "../utils/API"
 
 
@@ -9,22 +10,32 @@ function Hospital() {
     const [patients, setPatients] = useState([])
 
     useEffect(() => {
+        function loadSix() {
+            API.findSix()
+                .then(res =>
+                    // console.log(res.data),
+                    setPatients(res.data),
+                    console.log(patients)
+
+                )
+                .catch(err => console.log(err));
+        }
 
         // console.log(id)
         loadSix()
         // console.log(ptInfo)
     }, [])
 
-    function loadSix() {
-        API.findSix()
-            .then(res =>
-                // console.log(res.data),
-                setPatients(res.data),
-                console.log(patients)
+    // function loadSix() {
+    //     API.findSix()
+    //         .then(res =>
+    //             // console.log(res.data),
+    //             setPatients(res.data),
+    //             console.log(patients)
 
-            )
-            .catch(err => console.log(err));
-    }
+    //         )
+    //         .catch(err => console.log(err));
+    // }
 
     return (
         <Container >
@@ -34,25 +45,14 @@ function Hospital() {
                 </Col>
             </Row>
             {patients.length ? (
-                <Row>
+                <div style={{ justifyContent: "space-around" }}>
                     {patients.map(patient => (
-                        <Col sm={1} md={3} lg={3} xl={3}>
-                            <Card>
-                                <Card.Header>
-                                    <h2>ETA: {patient.ETA}</h2>
-
-                                </Card.Header>
-                            </Card>
-                        </Col>
+                        // console.log(patient)
+                        <Row style={{justifyContent:"center"}}>
+                            <PatientCard patient={patient} />
+                        </Row>
                     ))}
-                    {/* // <CardDeck>
-                    //     {patients.map(patient =>(
-                    //         <Card>
-                    //             <h2>{patient._id}</h2>
-                    //         </Card>
-                    //         ))}
-                    // </CardDeck> */}
-                </Row>
+                </div>
             ) : (
                     <Row>
                         <h3>No Patients to display</h3>

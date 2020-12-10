@@ -5,10 +5,10 @@ const patientSchema = new Schema({
     respondingUnit: { type: String, required: false },
     ETA: { type: String, },
     // type: { type: String, required: true },
-    criticalWarn: { type: String, required: false },
-    vitals: { type: Array}
+    criticalWarn: { any:Object, required: false },
+    vitals: { type: Array }
 },
-{timestamps:true});
+    { timestamps: true });
 
 const Patient = mongoose.model("Patient", patientSchema);
 

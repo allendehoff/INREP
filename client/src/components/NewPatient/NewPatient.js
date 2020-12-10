@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import { Card, Container, Row, Col } from "react-bootstrap/"
 // import { Card } from "@material-ui/core"
 // import API from "../../utils/API";
 import Welcome from "../../components/Welcome/Welcome"
-import NewPtButton from "./NewPtButton"
+// import NewPtButton from "./NewPtButton"
 import PtInitForm from "./PtInitForm"
 
 
@@ -45,18 +45,20 @@ function NewPatient(props) {
                     <Welcome userType="EMS Provider" />
                 </Col>
             </Row>
-            <Card>
-                <Card.Header>
-                    <h1>New patient</h1>
-                </Card.Header>
-                <Card.Body>
-                    <PtInitForm />
-                </Card.Body>
-                <a
-                    className="btn btn-dark"
-                    href="/ems"
-                ><h4>EMS HOME</h4></a>
-            </Card>
+            <Row style={{justifyContent:"center"}}>
+                <Card>
+                    <Card.Header>
+                        <h1>New patient</h1>
+                    </Card.Header>
+                    <Card.Body>
+                        <PtInitForm />
+                    </Card.Body>
+                    {/* <a
+                        className="btn btn-dark"
+                        href="/ems"
+                    ><h4>EMS HOME</h4></a> */}
+                </Card>
+            </Row>
         </Container>
     )
 }

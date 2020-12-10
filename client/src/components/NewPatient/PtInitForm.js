@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom";
 function PtInitForm(props) {
     const [ptInit, setPtInit] = useState({
         respondingUnit: "",
-        ETA: "",
-        criticalWarn: ""
+        // ETA: "",
+        // criticalWarn: ""
     })
     const history = useHistory()
     // const [ptId, setPtId] = useState("")
@@ -46,7 +46,7 @@ function PtInitForm(props) {
                     name="respondingUnit"
                 />
             </Form.Group>
-            <Form.Group>
+            {/* <Form.Group>
                 <Form.Label>ETA</Form.Label>
                 <Form.Control
                         type="text"
@@ -60,8 +60,8 @@ function PtInitForm(props) {
                         type="text"
                         name="criticalWarn"
                         onChange={handleInputChange} />
-            </Form.Group>
-            <Form.Control type="submit" value="Submit"></Form.Control>
+            </Form.Group> */}
+            <Form.Control className="btn btn-primary" type="submit" value="Initiate Patient Report"></Form.Control>
             {/* <button 
             className="btn btn-warning"
             >

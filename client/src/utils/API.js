@@ -21,9 +21,14 @@ export default {
         // return axios.get("/api/patients/id", {params: {id}})
     },
 
-    updateVitals: function(id, update) {
+    updateVitals: function(id, vitals) {
         // console.log("here")
-        return axios.put("/api/patients/vitals/"+ id, update)
+        return axios.put("/api/patients/vitals/"+ id, vitals)
+    },
+
+    updateCriticalWarnings: function(id, criticals) {
+        // console.log("here")
+        return axios.put("/api/patients/criticals/"+ id, criticals)
     },
 
     findSix: function () {

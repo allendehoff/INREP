@@ -44,9 +44,12 @@ function VitalsForm(props) {
                     type="number"
                     onChange={props.onChange}></Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button 
+            onClick={props.onSubmit}
+            variant="primary" 
+            type="submit">
                 Submit
-                            </Button>
+            </Button>
         </Form>
     )
 }

@@ -12,6 +12,17 @@ module.exports = {
             })
     },
 
+    findSix: function (req, res) {
+        db.Patient
+            .find(req.query)
+            .limit(6)
+            .sort({ createdAt: -1 })
+            .then(patients =>
+                // console.log(patients)
+                res.json(patients)
+            )
+    },
+
     findPtById: function (req, res) {
         // console.log("here")
         // console.log(req.params)
@@ -40,17 +51,20 @@ module.exports = {
         // console.log(req.body)
     },
 
-    findSix: function (req, res) {
-        db.Patient
-            .find(req.query)
-            .limit(6)
-            .sort({ createdAt: -1 })
-            .then(patients =>
-                // console.log(patients)
-                res.json(patients)
-            )
+    updateCriticals: function (req,res) {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        // const parsedCriticals = JSON.parse(req.body)
+        const stringCriticals = JSON.stringify(req.body)
 
+        console.log(req.params.id)
+        console.log(req.body)
+        db.Patient
+        .findByIdAndUpdate({_id:id}, {$set:{criticalWarn: stringCriticals}}, {new:true}, (err, result) => {
+            if (err) { console.log(err) }
+            else { console.log(result); res.send(result) }
+        } )
     }
+
 
     // findByMostRecent: function (req, res) {
     //     db.Patient

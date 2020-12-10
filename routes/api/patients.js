@@ -12,7 +12,10 @@ router.route("/:id")
 
 router.route("/vitals/:id")
     .put(patientsController.updateVitals)
-    
+
+router.route("/criticals/:id")
+    .put(patientsController.updateCriticals)
+
 // router.route("/update")
 
 // router.route("/recent")
