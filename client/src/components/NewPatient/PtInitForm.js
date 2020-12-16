@@ -26,10 +26,15 @@ function PtInitForm(props) {
     function handleSubmit(event) {
         event.preventDefault()
         // console.log(ptInit)
-        API.createPatient(ptInit).then((data) => {
-            // console.log(data)
-            handleReroute(data.data._id)
-        })
+        
+        // if (navigator.onLine){
+
+            API.createPatient(ptInit).then((data) => {
+                // console.log(data)
+                handleReroute(data.data._id)
+            })
+        // } else {console.log("offlineoffline")}
+        
         // .then(API.findMostRecentPatient()
         //     .then(setPtId()))
         // .then(console.log(dbModel)))

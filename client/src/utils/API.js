@@ -11,7 +11,9 @@ export default {
     // },
 
     createPatient: function (PtInitInfo) {
-        return axios.post("/api/patients/new", PtInitInfo)
+        // if (navigator.onLine) {
+            return axios.post("/api/patients/new", PtInitInfo)
+        // } else {console.log("offline here")}
     },
 
     findById: function(id) {

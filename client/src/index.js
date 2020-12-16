@@ -4,7 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// const serviceWorker = require("../public/serviceWorker")
 
+
+// ServiceWorker.register("../public/serviceWorker.js")
 ReactDOM.render(<App />, document.getElementById("root"));
 
 

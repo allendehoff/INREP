@@ -103,12 +103,13 @@ function CurrentPatient() {
         // const warningsString = JSON.stringify(criticalWarnings)
         // console.log(warningsString)
         API.updateCriticalWarnings(id, criticalWarnings)
-            .then(setCriticalWarning(criticalsAllFalse))
+            // .then(setCriticalWarning(criticalsAllFalse))
+            // .then(setCriticalWarning({...criticalWarnings}))
             .then(loadById(id))
     }
 
     return (
-        <Container style={{paddingTop:"2rem"}}>
+        <Container style={{ paddingTop: "2rem" }}>
             {/* <Navbar>
                 <NavbarBrand>this is the page for patient ID: {id}</NavbarBrand>
             </Navbar> */}

@@ -1,15 +1,17 @@
-const { func } = require("prop-types")
 const db = require("../models")
 const mongoose = require("mongoose")
 
 module.exports = {
+
     newPatient: function (req, res) {
-        db.Patient
-            .create(req.body)
-            .then(newPatient => {
-                // console.log(dbModel)
-                return res.json(newPatient)
-            })
+        // if (navigator.onLine) {
+            db.Patient
+                .create(req.body)
+                .then(newPatient => {
+                    // console.log(dbModel)
+                    return res.json(newPatient)
+                })
+        // } else {console.log("offline!!!")}
     },
 
     findSix: function (req, res) {
