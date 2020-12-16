@@ -15,7 +15,7 @@ function VitalsTable(props) {
             </thead>
             <tbody>
                 {props.patient.vitals.slice(0).reverse().map(vitals =>
-                    <tr>
+                    <tr key={vitals.time}>
                         <td>{vitals.time}</td>
                         <td>{vitals.HR}</td>
                         <td>{vitals.RR}</td>

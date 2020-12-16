@@ -14,8 +14,11 @@ import CriticalWarnSelect from "../components/CriticalWarning/CritWarnSelect"
 import { useParams } from "react-router-dom"
 import API from "../utils/API"
 
-const dayjs = require("dayjs")
 
+import io from "socket.io-client"
+const socket = io()
+
+const dayjs = require("dayjs")
 
 function CurrentPatient() {
     // const [entries, setEntries] = useState(1)
@@ -78,6 +81,7 @@ function CurrentPatient() {
         event.preventDefault();
         if (vitals.HR !== "Not Reported") {
             API.updateVitals(id, vitals)
+                .then(socket.emit("update"))
                 .then(setVitals(blankVitals))
                 .then(loadById(id))
         }
@@ -105,6 +109,7 @@ function CurrentPatient() {
         API.updateCriticalWarnings(id, criticalWarnings)
             // .then(setCriticalWarning(criticalsAllFalse))
             // .then(setCriticalWarning({...criticalWarnings}))
+            .then(socket.emit("update"))
             .then(loadById(id))
     }
 

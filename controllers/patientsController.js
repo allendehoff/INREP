@@ -2,7 +2,6 @@ const db = require("../models")
 const mongoose = require("mongoose")
 
 module.exports = {
-
     newPatient: function (req, res) {
         // if (navigator.onLine) {
             db.Patient

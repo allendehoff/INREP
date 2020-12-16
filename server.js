@@ -4,13 +4,23 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-// const socketPort = 3002;
+
+const socketPort = 3002;
 
 const SocketIO = require("socket.io");
 
+// const io = SocketIO(socketPort)
+
 const server = http.createServer(app)
 
-const io = SocketIO(server)
+const io = SocketIO(server
+    // ,{
+    // cors: {
+    //     origin: "http://localhost:3000/",
+    //     methods: ["GET", "POST"]
+    // }
+// }
+)
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -35,9 +45,16 @@ app.use(routes);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/casrep");
 mongoose.set('useFindAndModify', false);
 
-io.on("connection", (socket) => {
-    console.log("cient connected on socket", socket.id)
-    console.log(socket)
+
+// io.on('connection', socket => socket.emit('hello', { message: 'hello from server!' }));
+
+io.on("connection", socket => {
+    console.log("client connected on socket", socket.id)
+    socket.on("update", () =>{
+        io.sockets.emit("hello")
+        // socket.emit("update", update)
+    })
+    // console.log(socket)
 })
 
 // Start the API server
