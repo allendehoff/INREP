@@ -12,11 +12,11 @@ function EMS() {
     
     return (
         <Container>
-            <Row className="jumbotron">
-                <Col>
-                    <Welcome userType="EMS Provider" />
-                </Col>
-            </Row>
+            <div
+                style={{ disply: "flex", textAlign: "center", padding: "1rem 0 2rem 0", borderBottom: "5px solid #FFD400", marginBottom: "3rem" }}
+            >
+                <h1 style={{ color: "#FFD400" }}>Welcome EMS User</h1>
+            </div>
             <Row className="justify-content-center">
                 <EmsLaunch />
             </Row>

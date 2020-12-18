@@ -10,11 +10,17 @@ router.route("/new")
 router.route("/:id")
     .get(patientsController.findPtById)
 
+router.route("/eta/:id")
+    .put(patientsController.updateETA)
+
 router.route("/vitals/:id")
     .put(patientsController.updateVitals)
 
 router.route("/criticals/:id")
     .put(patientsController.updateCriticals)
+
+router.route("/information/:id")
+    .put(patientsController.updatePatientInformation)
 
 // router.route("/update")
 

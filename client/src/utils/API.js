@@ -23,6 +23,10 @@ export default {
         // return axios.get("/api/patients/id", {params: {id}})
     },
 
+    updateETA: function (id, time) {
+        return axios.put("/api/patients/eta/" + id, time)
+    },
+
     updateVitals: function(id, vitals) {
         // console.log("here")
         return axios.put("/api/patients/vitals/"+ id, vitals)
@@ -31,6 +35,10 @@ export default {
     updateCriticalWarnings: function(id, criticals) {
         // console.log("here")
         return axios.put("/api/patients/criticals/"+ id, criticals)
+    },
+    
+    updatePtInformation: function (id, information) {
+        return axios.put("/api/patients/information/" +id, information)
     },
 
     findSix: function () {

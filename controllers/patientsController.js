@@ -4,12 +4,12 @@ const mongoose = require("mongoose")
 module.exports = {
     newPatient: function (req, res) {
         // if (navigator.onLine) {
-            db.Patient
-                .create(req.body)
-                .then(newPatient => {
-                    // console.log(dbModel)
-                    return res.json(newPatient)
-                })
+        db.Patient
+            .create(req.body)
+            .then(newPatient => {
+                // console.log(dbModel)
+                return res.json(newPatient)
+            })
         // } else {console.log("offline!!!")}
     },
 
@@ -35,6 +35,17 @@ module.exports = {
             })
     },
 
+    updateETA: function (req, res) {
+        // console.log(req.body.time)
+        const id = mongoose.Types.ObjectId(req.params.id);
+        db.Patient
+            .findByIdAndUpdate({ _id: id }, { $set: { ETA: req.body.time } }, { new: true, upsert: true }, (err, result) => {
+                if (err) { console.log(err) }
+                else { console.log(result); res.send(result) }
+            }
+            )
+    },
+
     updateVitals: function (req, res) {
         const id = mongoose.Types.ObjectId(req.params.id);
         try {
@@ -52,7 +63,7 @@ module.exports = {
         // console.log(req.body)
     },
 
-    updateCriticals: function (req,res) {
+    updateCriticals: function (req, res) {
         const id = mongoose.Types.ObjectId(req.params.id);
         // const parsedCriticals = JSON.parse(req.body)
         const stringCriticals = JSON.stringify(req.body)
@@ -60,10 +71,25 @@ module.exports = {
         console.log(req.params.id)
         console.log(req.body)
         db.Patient
-        .findByIdAndUpdate({_id:id}, {$set:{criticalWarn: stringCriticals}}, {new:true}, (err, result) => {
-            if (err) { console.log(err) }
-            else { console.log(result); res.send(result) }
-        } )
+            .findByIdAndUpdate({ _id: id }, { $set: { criticalWarn: stringCriticals } }, { new: true }, (err, result) => {
+                if (err) { console.log(err) }
+                else { console.log(result); res.send(result) }
+            })
+    },
+
+    updatePatientInformation: function (req, res) {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        const stringInformation = JSON.stringify(req.body)
+
+        // console.log(req.params.id)
+        // console.log(req.body)
+        // console.log(stringInformation)
+
+        db.Patient
+            .findByIdAndUpdate({ _id: id }, { $set: { patientInformation: stringInformation } }, { upsert: true, new: true }, (err, result) => {
+                if (err) { console.log(err) }
+                else { console.log(result); res.send(result) }
+            })
     }
 
 

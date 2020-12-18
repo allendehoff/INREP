@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Login from "./components/Login/Login"
 // import Signup from "./pages/Signup"
+import Navigation from "./components/Navbar/Navbar"
 import Home from "./pages/Home"
 import EMS from "./pages/EMS"
 import Hospital from "./pages/Hospital"
@@ -18,29 +19,31 @@ function App() {
       }}
     >
       <Router>
-        <Switch>
-          <Route exact path={"/"}>
-            <Home />
-          </Route>
-          <Route exact path={"/ems"}>
-            <EMS/>
-          </Route>
-          <Route path={"/new"}>
-            <NewPatient/>
-          </Route>
-          <Route exact path = {"/hospital"}>
-            <Hospital/>
-          </Route>
-          <Route exact path={"/patients/:id"}>
-            <CurrentPatient/>
-          </Route>
-          {/* <Route exact path={["/", "/login"]}>
+        <Navigation />
+          <Switch>
+            <Route exact path={"/"}>
+              <Home />
+            </Route>
+            <Route exact path={"/ems"}>
+              <EMS />
+            </Route>
+            <Route path={"/new"}>
+              <NewPatient />
+            </Route>
+            <Route exact path={"/hospital"}>
+              <Hospital />
+            </Route>
+            <Route exact path={"/patients/:id"}>
+              <CurrentPatient />
+            </Route>
+            {/* <Route exact path={["/", "/login"]}>
           <Login />
         </Route>
         <Route path="/signup">
           <Signup />
         </Route> */}
-        </Switch>
+          </Switch>
+        {/* </Navigation> */}
       </Router>
     </div>
 

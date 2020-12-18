@@ -1,0 +1,23 @@
+/* .collapse {
+} */
+
+.accordionButton {
+    width: 170px;
+    padding:0.4rem;
+    border:3px solid white;
+    border-radius: 10px;
+    background-color: rgb(115, 149, 111);
+    justify-content: center;
+    display: flex;
+    
+}
+
+.accBtnSpan {
+    background-color: lightgray;
+    color: black;
+    border-radius: 10px;
+    padding:0.2rem 0.5rem;
+    width:80%;
+    display: flex;
+    justify-content: space-between;
+}

@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form"
 // import {Form} from "@material-ui/core"
 import { useHistory } from "react-router-dom";
 
+import io from "socket.io-client"
+const socket = io()
+
 function PtInitForm(props) {
     const [ptInit, setPtInit] = useState({
         respondingUnit: "",
@@ -32,7 +35,7 @@ function PtInitForm(props) {
             API.createPatient(ptInit).then((data) => {
                 // console.log(data)
                 handleReroute(data.data._id)
-            })
+            }).then(socket.emit("update"))
         // } else {console.log("offlineoffline")}
         
         // .then(API.findMostRecentPatient()

@@ -6,6 +6,7 @@ const patientSchema = new Schema({
     ETA: { type: String, },
     // type: { type: String, required: true },
     criticalWarn: { any:Object, required: false },
+    patientInformation: {any:Object, required:false},
     vitals: { type: Array }
 },
     { timestamps: true });

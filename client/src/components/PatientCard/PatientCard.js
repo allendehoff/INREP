@@ -4,6 +4,9 @@ import { Card, Accordion } from "react-bootstrap"
 // import 'moment-timezone';
 
 import VitalsTable from "../Vitals/VitalsTable"
+import PatientInformationTable from "../PatientInformation/PatientInformationTable"
+
+import "./ptCardStyle.css"
 
 function PatientCard(props) {
     // useEffect(() => {
@@ -26,7 +29,12 @@ function PatientCard(props) {
         fetchTrueWarnings(JSON.parse(props.patient.criticalWarn))
     }
 
+    // const patientInfoObject = JSON.parse(props.patient.patientInformation)
+
     return (
+        // <div>
+
+        // </div>
         <Card style={{ marginBottom: "1rem", paddingBottom: "1rem", minWidth: "80%" }}>
             <Card.Header>
                 Unit Responding: {props.patient.respondingUnit} |
@@ -37,7 +45,7 @@ function PatientCard(props) {
                     <div style={{ display: "flex", justifyContent: "space-around", paddingTop: "1rem" }}>
                         {warningKeys.map(warning => {
                             if (warning !== "pending") {
-                                return <p key={warning} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "1rem" }}>{warning}</p>
+                                return <p key={warning} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "0.5rem" }}>{warning}</p>
                             }
                         }
                         )}
@@ -45,14 +53,20 @@ function PatientCard(props) {
                 </Card.Title>
                 {/* <Card.Text>ETA: {props.patient.ETA}</Card.Text> */}
                 <Accordion defaultActiveKey="0">
-                    <Card>
-                        <Accordion.Toggle eventKey="vitals">Vitals</Accordion.Toggle>
+                        <Accordion.Toggle eventKey="vitals" className="accordionButton"><span className="accBtnSpan">Vitals <span>&gt;</span></span></Accordion.Toggle>
                         <Accordion.Collapse eventKey="vitals">
                             <VitalsTable patient={props.patient} />
                         </Accordion.Collapse>
-                    </Card>
+                    {/* </Card> */}
                 </Accordion>
-
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Toggle eventKey="patientInformation" className="accordionButton">
+                        <span className="accBtnSpan">Patient Information <span>&gt;</span></span>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="patientInformation">
+                        <PatientInformationTable patientObj={props.patient.patientInformation} />
+                    </Accordion.Collapse>
+                </Accordion>
             </Card.Body>
         </Card>
     )

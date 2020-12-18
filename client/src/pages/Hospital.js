@@ -42,10 +42,10 @@ function Hospital() {
         // console.log(ptInfo)
     }, [])
     // socket.on('hello', ({ message }) => alert(message));
-    
+
     // socket.on('hello', () => {console.log("hello world")});
 
-    socket.on("hello", ()=> {
+    socket.on("hello", () => {
         loadSix()
     })
 
@@ -62,11 +62,17 @@ function Hospital() {
     // render() {
     return (
         <Container >
-            <Row className="jumbotron">
+            <div
+                style={{ disply: "flex", textAlign: "center", padding: "1rem 0 2rem 0", borderBottom: "5px solid #FFD400", marginBottom: "3rem" }}
+            >
+                <h1 style={{ color: "#FFD400" }}>Welcome Hospital User</h1>
+                <h4 style={{ color: "#B7D5D4" }}>Here are the most recent updates regarding your incoming patients from EMS</h4>
+            </div>
+            {/* <Row className="jumbotron">
                 <Col>
                     <Welcome userType="Hospital User" />
                 </Col>
-            </Row>
+            </Row> */}
             {patients.length ? (
                 <div style={{ justifyContent: "space-around" }}>
                     {patients.map(patient => (
