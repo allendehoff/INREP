@@ -1,51 +1,59 @@
 import React from "react"
-import { Card, Container, Row, Col } from "react-bootstrap/"
+// import { Card, Container, Row, Col } from "react-bootstrap/"
 // import { Card } from "@material-ui/core"
 // import API from "../../utils/API";
 import Welcome from "../../components/Welcome/Welcome"
 // import NewPtButton from "./NewPtButton"
 import PtInitForm from "./PtInitForm"
 
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+// import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+// import { TextField } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1
+    },
+    header: {
+        padding: "2rem 0 4rem 0",
+        textAlign: "center",
+        borderBottom: "5px solid #FFD400",
+        marginBottom: "3rem"
+    },
+    subheader: {
+        textAlign: "center",
+        paddingBottom: "3rem"
+    },
+}))
+
 
 function NewPatient(props) {
-    // const [currentPt, setCurrentPt] = useState({ status: "" })
-    // let patient
-
-    // function handlePtRender(newPt) {
-    //     setCurrentPt(newPt)
-    // }
-
-    // // function renderSwitch(currentPt) {
-    // switch (currentPt.status) {
-    //     case "":
-    //         patient = <NewPtButton onClick={handlePtRender} />
-    //         break
-    //     case "pending":
-    //         patient = <PtInitForm onSubmit={handlePtRender}/>
-    //         break
-    //     default:
-    //     // break
-    //     // patient = (<button
-    //     //     className="btn btn-success"
-    //     //     onClick={setCurrentPt({ status: "pending" })}
-    //     // >
-    //     //     <h4>Start New Patient Report</h4>
-    //     // </button>)
-    // }
-    // }
-
-    // function goToEmsDash() {
-    //     props.onClick("")
-    // }
+    const classes = useStyles()
 
     return (
         <Container>
-            <Row className="jumbotron">
+            <Grid container>
+                <Grid item xs={12} className={classes.header}>
+                    <h1 style={{ color: "#FFD400" }}>Welcome EMS User</h1>
+                    {/* <h4 style={{ color: "#B7D5D4" }}>A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</h4> */}
+                </Grid>
+                <Grid item xs={12} className={classes.subheader}>
+                    <h2 style={{ color: "white" }}>What unit is responding to this incident?</h2>
+                </Grid>
+                <Grid item xs={12}>
+                    <PtInitForm />
+                </Grid>
+            </Grid>
+            {/* <Row className="jumbotron">
                 <Col>
                     <Welcome userType="EMS Provider" />
                 </Col>
             </Row>
-            <Row style={{justifyContent:"center"}}>
+            <Row style={{ justifyContent: "center" }}>
                 <Card>
                     <Card.Header>
                         <h1>New patient</h1>
@@ -56,9 +64,9 @@ function NewPatient(props) {
                     {/* <a
                         className="btn btn-dark"
                         href="/ems"
-                    ><h4>EMS HOME</h4></a> */}
+                    ><h4>EMS HOME</h4></a> 
                 </Card>
-            </Row>
+            </Row> */}
         </Container>
     )
 }

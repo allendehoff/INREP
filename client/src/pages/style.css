@@ -4,8 +4,9 @@
     /* margin-top:  1rem; */
 }
 .card {
-    background-color: #007EA7;
+    background-color: rgb(119, 135, 139);
     text-align: center;
+    width: 100%;
 }
 .card-body {
     /* display: flex; */

@@ -77,9 +77,9 @@ function Hospital() {
                 <div style={{ justifyContent: "space-around" }}>
                     {patients.map(patient => (
                         // console.log(patient)
-                        <Row key={patient._id} style={{ justifyContent: "center" }}>
-                            <PatientCard patient={patient} />
-                        </Row>
+                        // <Row key={patient._id} style={{ justifyContent: "center" }}>
+                            <PatientCard key={patient._id} patient={patient} />
+                        // </Row>
                     ))}
                 </div>
             ) : (

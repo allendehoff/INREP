@@ -39,7 +39,7 @@ function CriticalWarnings(props) {
 
 
     return (
-        <Card style={{width:"80%", marginBottom:"1rem"}}>
+        <Card>
             <Card.Header>Critical Warnings 
                 </Card.Header>
             <Card.Body>
