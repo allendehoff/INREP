@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
+        fontWeight: theme.typography.fontWeightBold,
     },
     vitalsHead: {
         backgroundColor: "rgb(148, 65, 71)"
