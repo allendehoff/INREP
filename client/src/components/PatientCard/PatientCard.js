@@ -32,22 +32,22 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         borderBottom: "1px solid black"
     },
-    header:{
-        marginBottom:"1rem",
+    header: {
+        marginBottom: "1rem",
         borderBottom: "1px solid black"
     },
     warningContainer: {
         padding: "2rem 0",
-        alignItems:"center"
+        alignItems: "center"
     },
-    warningHead:{
-        lineHeight:"4.0",
-        textAlign:"center"
+    warningHead: {
+        lineHeight: "4.0",
+        textAlign: "center"
     },
     warningField: {
         display: "flex",
         justifyContent: "space-around",
-        flexWrap:"wrap",
+        flexWrap: "wrap",
     },
     etaField: {
         border: "5px solid black",
@@ -56,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         alignItems: "center"
     },
-    etaText:{
-        lineHeight:"4.0"
+    etaText: {
+        lineHeight: "4.0"
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -142,7 +142,7 @@ function PatientCard(props) {
                             </Grid>
                             <Grid item xs={8} className={classes.warningField}>
                                 {warningKeys.map(warning => {
-                                    return <Paper key={warning} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "0.5rem", margin:"0.5rem 0"}}>{warning}</Paper>
+                                    return <Paper key={warning} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "0.5rem", margin: "0.5rem 0" }}>{warning}</Paper>
                                 })}
                             </Grid>
 
@@ -167,8 +167,9 @@ function PatientCard(props) {
                                     <VitalsTable patient={props.patient} />
                                 </AccordionDetails>
                             </Accordion>
-                            <Accordion className={classes.ptInfoHead}>
+                            <Accordion>
                                 <AccordionSummary
+                                    className={classes.ptInfoHead}
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
                                     id="Patient Information"
