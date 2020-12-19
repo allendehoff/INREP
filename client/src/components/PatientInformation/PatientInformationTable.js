@@ -53,6 +53,7 @@ function PatientInformationTable(props) {
                         <TableCell>Sex</TableCell>
                         <TableCell>Chief Complaint</TableCell>
                         <TableCell>MOI/HPI</TableCell>
+                        <TableCell>O2 Treatment</TableCell>
                         <TableCell>From</TableCell>
                     </TableRow>
                 </TableHead>
@@ -66,27 +67,27 @@ function PatientInformationTable(props) {
             </Table>
         </TableContainer>
     )
-    return (
-        <Table striped bordered >
-            <thead>
-                <tr>
-                    <th>Age</th>
-                    <th>Sex</th>
-                    <th>Chief Complaint</th>
-                    <th>MOI/HPI</th>
-                    <th>O2 Treatment</th>
-                    <th>From</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {infoArray.map(info =>
-                        <td key={info}>{info}</td>
-                    )}
-                </tr>
-            </tbody>
-        </Table>
-    )
+    // return (
+    //     <Table striped bordered >
+    //         <thead>
+    //             <tr>
+    //                 <th>Age</th>
+    //                 <th>Sex</th>
+    //                 <th>Chief Complaint</th>
+    //                 <th>MOI/HPI</th>
+    //                 <th>O2 Treatment</th>
+    //                 <th>From</th>
+    //             </tr>
+    //         </thead>
+    //         <tbody>
+    //             <tr>
+    //                 {infoArray.map(info =>
+    //                     <td key={info}>{info}</td>
+    //                 )}
+    //             </tr>
+    //         </tbody>
+    //     </Table>
+    // )
 }
 
 export default PatientInformationTable

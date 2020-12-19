@@ -50,82 +50,83 @@ function CriticalWarnSelect(props) {
     //     setChecked(allFalse)
     // }
     return (
-
         <FormGroup row>
             <Grid container className={classes.formgroup}>
-                <Grid item xs={12}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.CPR}
-                                onChange={handleChange}
-                                name="CPR"
-                                color="secondary"
-                            />
-                        }
-                        label="CPR IN PROGRESS"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.stroke}
-                                onChange={handleChange}
-                                name="stroke"
-                                color="secondary"
-                            />
-                        }
-                        label="STROKE ALERT"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.trauma1}
-                                onChange={handleChange}
-                                name="trauma1"
-                                color="secondary"
-                            />
-                        }
-                        label="Trauma Level 1"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.trauma2}
-                                onChange={handleChange}
-                                name="trauma2"
-                                color="secondary"
-                            />
-                        }
-                        label="Trauma Level 2"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.intubated}
-                                onChange={handleChange}
-                                name="intubated"
-                                color="secondary"
-                            />
-                        }
-                        label="Patient Intubated"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked.fallWithThinners}
-                                onChange={handleChange}
-                                name="fallWithThinners"
-                                color="secondary"
-                            />
-                        }
-                        label="Fall With Blood Thinners"
-                    />
-                </Grid>
-                <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, checked)}>Submit</Button>
+                <form>
+                    <Grid item xs={12}>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.CPR}
+                                    onChange={handleChange}
+                                    name="CPR"
+                                    color="secondary"
+                                />
+                            }
+                            label="CPR IN PROGRESS"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.stroke}
+                                    onChange={handleChange}
+                                    name="stroke"
+                                    color="secondary"
+                                />
+                            }
+                            label="STROKE ALERT"
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.trauma1}
+                                    onChange={handleChange}
+                                    name="trauma1"
+                                    color="secondary"
+                                />
+                            }
+                            label="Trauma Level 1"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.trauma2}
+                                    onChange={handleChange}
+                                    name="trauma2"
+                                    color="secondary"
+                                />
+                            }
+                            label="Trauma Level 2"
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.intubated}
+                                    onChange={handleChange}
+                                    name="intubated"
+                                    color="secondary"
+                                />
+                            }
+                            label="Patient Intubated"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={checked.fallWithThinners}
+                                    onChange={handleChange}
+                                    name="fallWithThinners"
+                                    color="secondary"
+                                />
+                            }
+                            label="Fall With Blood Thinners"
+                        />
+                    </Grid>
+                    <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, checked)}>Submit</Button>
+                </form>
             </Grid>
         </FormGroup>
     )

@@ -12,6 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import EtaUpdate from "../EtaUpdate/EtaUpdate"
 import CriticalWarnSelect from '../CriticalWarning/CritWarnSelect';
 import VitalsForm from "../Vitals/VitalsForm"
 import PatientInformationForm from "../PatientInformation/PatientInformationForm"
@@ -98,7 +99,8 @@ function EMSToolbar(props) {
                 <Tab label="Allerigies" {...a11yProps(6)} />
             </Tabs>
             <TabPanel value={value} index={0} >
-                <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
+                <EtaUpdate onSubmit={props.etaSubmit}/>
+                {/* <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
                     <div className={classes.inputContainer}>
                         <TextField
                             className={classes.input}
@@ -113,7 +115,7 @@ function EMSToolbar(props) {
                         />
                     </div>
                     <Button size="large" variant="contained" color="primary" onClick={props.etaSubmit}>Submit</Button>
-                </form>
+                </form> */}
             </TabPanel>
             <TabPanel value={value} index={1} className={classes.tabpanel}>
                 {/* <FormGroup row> */}

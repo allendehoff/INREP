@@ -98,8 +98,8 @@ function PatientInformationForm(props) {
                         name="from"
                         onChange={handlePtInformationChange} />
                 </Grid>
+                <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, patientInformation)}>Submit</Button>
             </Grid>
-            <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, patientInformation)}>Submit</Button>
         </form >
     )
 

@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react"
 // import { Component } from "react"
-import {  Row, Col } from "react-bootstrap"
+// import {  Row, Col } from "react-bootstrap"
 // import Card from "react-bootstrap/Card"
 // import Moment from 'react-moment';
 // import 'moment-timezone';
 
 // import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-import EtaUpdateButton from "../components/EtaUpdate/EtaUpdateButton"
-import EtaUpdate from "../components/EtaUpdate/EtaUpdate"
+// import EtaUpdateButton from "../components/EtaUpdate/##EtaUpdateButton"
+// import EtaUpdate from "../components/EtaUpdate/EtaUpdate"
 import PatientCard from "../components/PatientCard/PatientCard"
-import VitalsForm from "../components/Vitals/VitalsForm"
-import NewVitals from "../components/Vitals/NewVitals"
-import CriticalWarnings from "../components/CriticalWarning/CriticalWarnings"
-import CriticalWarnSelect from "../components/CriticalWarning/CritWarnSelect"
-import UpdateInformation from "../components/PatientInformation/UpdateInformation"
-import PatientInformationForm from "../components/PatientInformation/PatientInformationForm"
+// import VitalsForm from "../components/Vitals/VitalsForm"
+// import NewVitals from "../components/Vitals/NewVitals"
+// import CriticalWarnings from "../components/CriticalWarning/CriticalWarnings"
+// import CriticalWarnSelect from "../components/CriticalWarning/CritWarnSelect"
+// import UpdateInformation from "../components/PatientInformation/UpdateInformation"
+// import PatientInformationForm from "../components/PatientInformation/PatientInformationForm"
 import EMSToolbar from "../components/EMSToolbar/EMSToolbar"
 
 import { useParams } from "react-router-dom"
@@ -30,7 +30,7 @@ import API from "../utils/API"
 import io from "socket.io-client"
 const socket = io()
 
-const dayjs = require("dayjs")
+// const dayjs = require("dayjs")
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,10 +79,10 @@ function CurrentPatient() {
     // }
     // const [criticalWarnings, setCriticalWarning] = useState(criticalsAllFalse)
 
-    const [eta, setEta] = useState({
-        pending: false,
-        time: ""
-    })
+    // const [eta, setEta] = useState({
+    //     pending: false,
+    //     time: ""
+    // })
 
     // const [patientInformation, setPatientInformation] = useState({
     //     pending: false,
@@ -123,11 +123,13 @@ function CurrentPatient() {
     // }
 
     function handleVitalsSubmit(event, data) {
+        // console.log(event.target.parentElement.parentElement)
         event.preventDefault();
-        console.log(data)
+        // console.log(data)
         if (data.HR !== "Not Reported") {
             API.updateVitals(id, data)
                 .then(socket.emit("update"))
+                .then(event.target.parentElement.parentElement.reset())
                 // .then(setVitals(blankVitals))
                 .then(loadById(id))
         }
@@ -148,15 +150,18 @@ function CurrentPatient() {
 
     function handleCriticalsSubmit(event, data) {
         event.preventDefault();
+        // console.log(event.target.parentElement.parentElement.parentElement)
         // console.log(data)
         // setCriticalWarning({ ...criticalWarnings, pending: false })
         // // console.log(criticalWarnings)
         // // const warningsString = JSON.stringify(criticalWarnings)
         // // console.log(warningsString)
+
         API.updateCriticalWarnings(id, data)
             // .then(setCriticalWarning(data))
             // .then(setCriticalWarning({...criticalWarnings}))
             .then(socket.emit("update"))
+            .then(event.target.parentElement.parentElement.reset())
             // .then(event.target.parentElement.parentElement.reset())
             .then(loadById(id))
     }
@@ -165,18 +170,19 @@ function CurrentPatient() {
     //     setEta({ ...eta, pending: true })
     // }
 
-    function handleEtaInput(event) {
-        const { name, value } = event.target
-        setEta({ ...eta, [name]: value })
-        // console.log(eta.time)
-    }
+    // function handleEtaInput(event) {
+    //     const { name, value } = event.target
+    //     setEta({ ...eta, [name]: value })
+    //     // console.log(eta.time)
+    // }
 
-    function handleEtaSubmit(event) {
+    function handleEtaSubmit(event, data) {
+        // console.log(data)
         event.preventDefault()
-        // console.log(event.target.parentElement.parentElement)
-        API.updateETA(id, { time: eta.time })
+        console.log(event.target.parentElement)
+        API.updateETA(id, { time: data.time })
             .then(socket.emit("update"))
-            .then(event.target.parentElement.parentElement.reset())
+            .then(event.target.parentElement.reset())
             // .then(setEta({ pending: false }))
             .then(loadById(id))
     }
@@ -194,6 +200,7 @@ function CurrentPatient() {
         event.preventDefault()
         API.updatePtInformation(id, data)
             .then(socket.emit("update"))
+            .then(event.target.parentElement.parentElement.reset())
             // .then(setPatientInformation({ pending: false }))
             .then(loadById(id))
     }
@@ -209,7 +216,7 @@ function CurrentPatient() {
             <Grid container
             className={classes.toolbar}>
                 <EMSToolbar 
-                    etaInputChange={handleEtaInput}
+                    // etaInputChange={handleEtaInput}
                     etaSubmit={handleEtaSubmit}
                     criticalSubmit={handleCriticalsSubmit}
                     vitalSubmit={handleVitalsSubmit}
@@ -234,7 +241,7 @@ function CurrentPatient() {
                 <Col>
                     <Card >
                         <Card.Header>ETA:
-                                 {/* <span>{ptInfo.data.ETA ? (ptInfo.data.ETA):("pending")}</span> 
+                                {/* <span>{ptInfo.data.ETA ? (ptInfo.data.ETA):("pending")}</span> 
                         </Card.Header>
                         <Card.Body>
                             {eta.pending ? (

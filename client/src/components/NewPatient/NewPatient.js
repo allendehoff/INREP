@@ -2,7 +2,7 @@ import React from "react"
 // import { Card, Container, Row, Col } from "react-bootstrap/"
 // import { Card } from "@material-ui/core"
 // import API from "../../utils/API";
-import Welcome from "../../components/Welcome/Welcome"
+// import Welcome from "../../components/Welcome/Welcome"
 // import NewPtButton from "./NewPtButton"
 import PtInitForm from "./PtInitForm"
 

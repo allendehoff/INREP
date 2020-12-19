@@ -6,7 +6,7 @@ import React from "react";
 import VitalsTable from "../Vitals/VitalsTable"
 import PatientInformationTable from "../PatientInformation/PatientInformationTable"
 
-import "./ptCardStyle.css"
+// import "./ptCardStyle.css"
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container'

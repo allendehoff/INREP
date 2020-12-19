@@ -10,10 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // import Card from "react-bootstrap/Card"
 import "./style.css"
-import EmsLaunch from "../components/EmsLaunch/EmsLaunch"
+// import EmsLaunch from "../components/EmsLaunch/##EmsLaunch"
 // import NewPatient from "../components/NewPatient/NewPatient"
 // import PreviousPatients from "../components/PreviousPatients/PreviousPatients"
-import Welcome from "../components/Welcome/Welcome"
+// import Welcome from "../components/Welcome/Welcome"
 import { Typography } from "@material-ui/core";
 
 const links = [
