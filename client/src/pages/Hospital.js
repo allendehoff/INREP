@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react"
 import { Container, Row, Col } from "react-bootstrap"
-import Welcome from "../components/Welcome/Welcome"
+// import Welcome from "../components/Welcome/Welcome"
 import PatientCard from "../components/PatientCard/PatientCard"
 import API from "../utils/API"
 
