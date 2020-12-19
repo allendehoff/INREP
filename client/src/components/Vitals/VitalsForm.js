@@ -15,10 +15,11 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     formgroup: {
-        display: "block"
+        display: "inline"
     },
     input: {
-        marginBottom: "0.3rem"
+        marginBottom: "0.3rem",
+        marginRight: "0.3rem"
     }
 }));
 
@@ -42,12 +43,12 @@ function VitalsForm(props) {
     const [vitals, setVitals] = useState(blankVitals)
 
     function handleVitalsInput(event) {
-// console.log(vitals.LOR)
-        if (vitals.time === ""){
+        // console.log(vitals.LOR)
+        if (vitals.time === "") {
             setVitals({ ...vitals, time: dayjs().format("HH:mm:ss") })
         } else {
-        const { name, value } = event.target;
-        setVitals({ ...vitals, [name]: value })
+            const { name, value } = event.target;
+            setVitals({ ...vitals, [name]: value })
         }
     };
 
@@ -62,51 +63,58 @@ function VitalsForm(props) {
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <Grid container className={classes.formgroup}>
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="LOR"
-                    variant="outlined"
-                    name="LOR"
-                    onChange={handleVitalsInput} />
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="Heart Rate"
-                    variant="outlined"
-                    name="HR"
-                    onChange={handleVitalsInput} />
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="Repiratory Rate"
-                    variant="outlined"
-                    name="RR"
-                    onChange={handleVitalsInput} />
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="BP systolic"
-                    variant="outlined"
-                    name="BPs"
-                    onChange={handleVitalsInput} />
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="BP diastolic"
-                    variant="outlined"
-                    name="BPd"
-                    onChange={handleVitalsInput} />
-                <TextField
-                    className={classes.input}
-                    id="outlined-basic"
-                    label="Oxygen Sat"
-                    variant="outlined"
-                    name="oygen"
-                    onChange={handleVitalsInput} />
+                <Grid item xs={12}>
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="LOR"
+                        variant="outlined"
+                        name="LOR"
+                        onChange={handleVitalsInput} />
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="Oxygen Sat"
+                        variant="outlined"
+                        name="oxygen"
+                        onChange={handleVitalsInput} />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="Heart Rate"
+                        variant="outlined"
+                        name="HR"
+                        onChange={handleVitalsInput} />
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="Repiratory Rate"
+                        variant="outlined"
+                        name="RR"
+                        onChange={handleVitalsInput} />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="BP systolic"
+                        variant="outlined"
+                        name="BPs"
+                        onChange={handleVitalsInput} />
+                    <TextField
+                        className={classes.input}
+                        id="outlined-basic"
+                        label="BP diastolic"
+                        variant="outlined"
+                        name="BPd"
+                        onChange={handleVitalsInput} />
+
+                </Grid>
                 <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, vitals)}>Submit</Button>
             </Grid>
-        </form>
+        </form >
     );
     // return (
     //     <Form onSubmit={props.onSubmit}>

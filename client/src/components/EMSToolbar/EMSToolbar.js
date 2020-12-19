@@ -14,6 +14,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CriticalWarnSelect from '../CriticalWarning/CritWarnSelect';
 import VitalsForm from "../Vitals/VitalsForm"
+import PatientInformationForm from "../PatientInformation/PatientInformationForm"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -59,8 +60,8 @@ const useStyles = makeStyles((theme) => ({
         borderRight: `1px solid ${theme.palette.divider}`,
     },
     tabpanel: {
-        display:"block",
-        overflow:"auto"
+        display: "block",
+        overflow: "auto"
     },
     input: {
         margin: "0 0.5rem"
@@ -91,48 +92,48 @@ function EMSToolbar(props) {
                 <Tab label="Update ETA" {...a11yProps(0)} />
                 <Tab label="Critical Warnings" {...a11yProps(1)} />
                 <Tab label="Update Vitals" {...a11yProps(2)} />
-                <Tab label="Item Four" {...a11yProps(3)} />
-                <Tab label="Item Five" {...a11yProps(4)} />
-                <Tab label="Item Six" {...a11yProps(5)} />
-                <Tab label="Item Seven" {...a11yProps(6)} />
+                <Tab label="Patient Information" {...a11yProps(3)} />
+                <Tab label="Interventions" {...a11yProps(4)} />
+                <Tab label="History" {...a11yProps(5)} />
+                <Tab label="Allerigies" {...a11yProps(6)} />
             </Tabs>
             <TabPanel value={value} index={0} >
-            <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
-                <div className={classes.inputContainer}>
-                    <TextField
-                        className={classes.input}
-                        required
-                        variant="outlined"
-                        label="ETA"
-                        // placeholder="MS-21"
-                        // helperText="Required"
-                        onChange={props.etaInputChange}
-                        type="text"
-                        name="time"
-                    />
-                </div>
+                <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
+                    <div className={classes.inputContainer}>
+                        <TextField
+                            className={classes.input}
+                            required
+                            variant="outlined"
+                            label="ETA"
+                            // placeholder="MS-21"
+                            // helperText="Required"
+                            onChange={props.etaInputChange}
+                            type="text"
+                            name="time"
+                        />
+                    </div>
                     <Button size="large" variant="contained" color="primary" onClick={props.etaSubmit}>Submit</Button>
-            </form>
-      </TabPanel>
+                </form>
+            </TabPanel>
             <TabPanel value={value} index={1} className={classes.tabpanel}>
                 {/* <FormGroup row> */}
-                    <CriticalWarnSelect onSubmit={props.criticalSubmit}/>
+                <CriticalWarnSelect onSubmit={props.criticalSubmit} />
                 {/* </FormGroup> */}
-      </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={2} className={classes.tabpanel}>
-                <VitalsForm onSubmit={props.vitalSubmit}/>
-      </TabPanel>
-            <TabPanel value={value} index={3}>
-                Item Four
-      </TabPanel>
+                <VitalsForm onSubmit={props.vitalSubmit} />
+            </TabPanel>
+            <TabPanel value={value} index={3} className={classes.tabpanel}>
+                <PatientInformationForm onSubmit={props.ptInfoSubmit} />
+            </TabPanel>
             <TabPanel value={value} index={4}>
-                Item Five
+                This feature is coming soon...
       </TabPanel>
             <TabPanel value={value} index={5}>
-                Item Six
+                This feature is coming soon...
       </TabPanel>
             <TabPanel value={value} index={6}>
-                Item Seven
+                This feature is coming soon...
       </TabPanel>
         </div>
     );
