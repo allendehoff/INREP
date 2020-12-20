@@ -3,10 +3,12 @@ import React, { useState } from "react"
 
 import { makeStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup'
+import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import { Form } from "react-bootstrap";
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
@@ -50,11 +52,14 @@ function CriticalWarnSelect(props) {
     //     setChecked(allFalse)
     // }
     return (
-        <FormGroup row>
-            <Grid container className={classes.formgroup}>
-                <form>
-                    <Grid item xs={12}>
-                        <FormControlLabel
+        // <FormGroup row>
+        //     <Grid container className={classes.formgroup}>
+        //         <form>
+        //             <Grid item xs={12}>
+        <div className={classes.root}>
+            <FormControl component="fieldset" className={classes.formControl}>
+                <FormGroup>
+                <FormControlLabel
                             control={
                                 <Checkbox
                                     checked={checked.CPR}
@@ -76,8 +81,6 @@ function CriticalWarnSelect(props) {
                             }
                             label="STROKE ALERT"
                         />
-                    </Grid>
-                    <Grid item xs={12}>
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -100,8 +103,6 @@ function CriticalWarnSelect(props) {
                             }
                             label="Trauma Level 2"
                         />
-                    </Grid>
-                    <Grid item xs={12}>
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -124,12 +125,96 @@ function CriticalWarnSelect(props) {
                             }
                             label="Fall With Blood Thinners"
                         />
-                    </Grid>
                     <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, checked)}>Submit</Button>
-                </form>
-            </Grid>
-        </FormGroup>
+                </FormGroup>
+            </FormControl>
+        </div>
+                        
+        //         </form>
+        //     </Grid>
+        // </FormGroup>
     )
+    // return (
+    //     <FormGroup row>
+    //         <Grid container className={classes.formgroup}>
+    //             <form>
+    //                 <Grid item xs={12}>
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.CPR}
+    //                                 onChange={handleChange}
+    //                                 name="CPR"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="CPR IN PROGRESS"
+    //                     />
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.stroke}
+    //                                 onChange={handleChange}
+    //                                 name="stroke"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="STROKE ALERT"
+    //                     />
+    //                 </Grid>
+    //                 <Grid item xs={12}>
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.trauma1}
+    //                                 onChange={handleChange}
+    //                                 name="trauma1"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="Trauma Level 1"
+    //                     />
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.trauma2}
+    //                                 onChange={handleChange}
+    //                                 name="trauma2"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="Trauma Level 2"
+    //                     />
+    //                 </Grid>
+    //                 <Grid item xs={12}>
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.intubated}
+    //                                 onChange={handleChange}
+    //                                 name="intubated"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="Patient Intubated"
+    //                     />
+    //                     <FormControlLabel
+    //                         control={
+    //                             <Checkbox
+    //                                 checked={checked.fallWithThinners}
+    //                                 onChange={handleChange}
+    //                                 name="fallWithThinners"
+    //                                 color="secondary"
+    //                             />
+    //                         }
+    //                         label="Fall With Blood Thinners"
+    //                     />
+    //                 </Grid>
+    //                 <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, checked)}>Submit</Button>
+    //             </form>
+    //         </Grid>
+    //     </FormGroup>
+    // )
 }
 
 export default CriticalWarnSelect

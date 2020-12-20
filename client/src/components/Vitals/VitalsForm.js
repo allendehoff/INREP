@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import { Typography } from "@material-ui/core";
 
 const dayjs = require("dayjs")
 
@@ -21,6 +22,17 @@ const useStyles = makeStyles((theme) => ({
     input: {
         marginBottom: "0.3rem",
         marginRight: "0.3rem"
+    },
+    submitButton: {
+        padding: "8px 22px",
+        fontSize: "0.9375rem",
+        minWidth: "64px",
+        backgroundColor:"blue",
+        // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        /* font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+        /* font-weight: 500; */
+        lineHeight: "1.75",
+        borderRadius: "4px",
     }
 }));
 
@@ -113,6 +125,7 @@ function VitalsForm(props) {
                         onChange={handleVitalsInput} />
 
                 </Grid>
+                {/* <Typography className={classes.submitButton}>SUBMIT</Typography> */}
                 <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, vitals)}>Submit</Button>
             </Grid>
         </form >

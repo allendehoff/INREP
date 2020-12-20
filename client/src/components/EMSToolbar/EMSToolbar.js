@@ -81,7 +81,7 @@ function EMSToolbar(props) {
     };
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} style={{ backgroundColor: "rgb(193, 224, 247)", }}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
@@ -90,16 +90,16 @@ function EMSToolbar(props) {
                 // aria-label="Vertical tabs example"
                 className={classes.tabs}
             >
-                <Tab label="Update ETA" {...a11yProps(0)} />
-                <Tab label="Critical Warnings" {...a11yProps(1)} />
-                <Tab label="Update Vitals" {...a11yProps(2)} />
-                <Tab label="Patient Information" {...a11yProps(3)} />
-                <Tab label="Interventions" {...a11yProps(4)} />
-                <Tab label="History" {...a11yProps(5)} />
-                <Tab label="Allerigies" {...a11yProps(6)} />
+                <Tab label="Update ETA" {...a11yProps(0)} style={{ backgroundColor: "rgb(73, 72, 91)" }} />
+                <Tab label="Critical Warnings" {...a11yProps(1)} style={{ backgroundColor: "red" }} />
+                <Tab label="Update Vitals" {...a11yProps(2)} style={{ backgroundColor: "rgb(148, 65, 71)" }} />
+                <Tab label="Patient Information" {...a11yProps(3)} style={{ backgroundColor: "rgb(169, 197, 160)" }} />
+                <Tab label="Interventions" {...a11yProps(4)} style={{ backgroundColor: "rgb(220, 96, 46)" }} />
+                <Tab label="History" {...a11yProps(5)} style={{ backgroundColor: "rgb(175, 162, 255)" }} />
+                <Tab label="Allerigies" {...a11yProps(6)} style={{ backgroundColor: "rgb(105, 79, 93)" }} />
             </Tabs>
             <TabPanel value={value} index={0} >
-                <EtaUpdate onSubmit={props.etaSubmit}/>
+                <EtaUpdate onSubmit={props.etaSubmit} />
                 {/* <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
                     <div className={classes.inputContainer}>
                         <TextField

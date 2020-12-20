@@ -61,10 +61,11 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightBold,
+        fontWeight: theme.typography.fontWeight,
     },
     vitalsHead: {
         backgroundColor: "rgb(148, 65, 71)"
+        // "#004777"
     },
     vitalsDetails: {
         backgroundColor: "rgb(148, 65, 71, 0.5)"
@@ -138,7 +139,7 @@ function PatientCard(props) {
                     <Grid item xs={9}>
                         <Grid container className={classes.warningContainer}>
                             <Grid item xs={4} className={classes.warningHead}>
-                                <Typography variant="h6">Critical Warnings:</Typography>
+                                <Typography variant="h6">CRITICAL WARNINGS</Typography>
                             </Grid>
                             <Grid item xs={8} className={classes.warningField}>
                                 {warningKeys.map(warning => {
@@ -159,7 +160,7 @@ function PatientCard(props) {
                                     aria-controls="panel1a-content"
                                     id="Vitals"
                                 >
-                                    <Typography className={classes.heading}>Vitals</Typography>
+                                    <Typography className={classes.heading}>VITALS</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails
                                     className={classes.vitalsDetails}
@@ -174,7 +175,7 @@ function PatientCard(props) {
                                     aria-controls="panel1a-content"
                                     id="Patient Information"
                                 >
-                                    <Typography className={classes.heading}>Patient Information</Typography>
+                                    <Typography className={classes.heading}>PATIENT INFORMATION</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails className={classes.ptInfoDetails}>
                                     <PatientInformationTable patientObj={props.patient.patientInformation} />
@@ -187,7 +188,7 @@ function PatientCard(props) {
                                     aria-controls="panel1a-content"
                                     id="Interventions"
                                 >
-                                    <Typography className={classes.heading}>Interventions</Typography>
+                                    <Typography className={classes.heading}>INTERVENTIONS</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails className={classes.interventionsDetail}>
                                     <Typography>This feature is coming soon...</Typography>
@@ -200,7 +201,7 @@ function PatientCard(props) {
                                     aria-controls="panel1a-content"
                                     id="History"
                                 >
-                                    <Typography className={classes.heading}>History</Typography>
+                                    <Typography className={classes.heading}>HISTORY</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails className={classes.historyDetail}>
                                     <Typography>This feature is coming soon...</Typography>
@@ -213,7 +214,7 @@ function PatientCard(props) {
                                     aria-controls="panel1a-content"
                                     id="Allergies"
                                 >
-                                    <Typography className={classes.heading}>Allergies</Typography>
+                                    <Typography className={classes.heading}>ALLERGIES</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails className={classes.allergiesDetail}>
                                     <Typography>This feature is coming soon...</Typography>

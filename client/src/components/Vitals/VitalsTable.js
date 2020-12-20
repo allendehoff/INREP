@@ -24,6 +24,7 @@ function VitalsTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell>Time</TableCell>
+                        <TableCell>LOR</TableCell>
                         <TableCell>HR</TableCell>
                         <TableCell>RR</TableCell>
                         <TableCell>BP</TableCell>
@@ -36,6 +37,7 @@ function VitalsTable(props) {
                             <TableCell component="th" scope="row">
                                 {vitals.time}
                             </TableCell>
+                            <TableCell>{vitals.LOR}</TableCell>
                             <TableCell >{vitals.HR}</TableCell>
                             <TableCell >{vitals.RR}</TableCell>
                             <TableCell>{vitals.BPs}/{vitals.BPd}</TableCell>

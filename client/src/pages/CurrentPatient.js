@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         paddingBottom: "3rem"
     },
-    toolbar:{
+    toolbar: {
         marginBottom: "3rem"
     }
 }))
@@ -121,17 +121,53 @@ function CurrentPatient() {
     //     // console.log(ptInfo)
     //     setVitals({ ...vitals, time: dayjs().format("HH:mm:ss") })
     // }
+    function clearForm(target) {
+        let form
+        // let parent = ".parentElement"
+        if (target.parentElement.nodeName === "FORM") {
+            form = target.parentElement
+        } else if (target.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement.parentElement
+        }
+        return form.reset()
+        // return form
+    }
+
+    // function findForm(target) {
+    //     let form
+    //     // let parent = ".parentElement"
+    //     if (target.parentElement.nodeName === "FORM") {
+    //         form = target.parentElement
+    //     } else if (target.parentElement.parentElement.nodeName === "FORM") {
+    //         form = target.parentElement.parentElement
+    //     } else if (target.parentElement.parentElement.parentElement.nodeName === "FORM") {
+    //         form = target.parentElement.parentElement.parentElement
+    //     } else if (target.parentElement.parentElement.parentElement.parentElement.nodeName === "FORM") {
+    //         form = target.parentElement.parentElement.parentElement.parentElement
+    //     }
+    //     return console.log(form)
+    //     // return form
+    // }
 
     function handleVitalsSubmit(event, data) {
-        // console.log(event.target.parentElement.parentElement)
+        // let form
         event.preventDefault();
+        // if (event.target.parentElement.parentElement.parentElement === )
+        // console.log(event.target.parentElement.parentElement.nodeName)
+        // event.target.parentElement.parentElement.parentElement.reset()
         // console.log(data)
         if (data.HR !== "Not Reported") {
             API.updateVitals(id, data)
+                .then(clearForm(event.target))
                 .then(socket.emit("update"))
-                .then(event.target.parentElement.parentElement.reset())
-                // .then(setVitals(blankVitals))
-                .then(loadById(id))
+            // .then(event.target.parentElement.parentElement.parentElement.reset())
+            // .then(console.log(event.target.parentElement.parentElement.parentElement))
+            // .then(setVitals(blankVitals))
+            // .then(loadById(id))
         }
         // .exec(loadById(id))
         // console.log(vitals)
@@ -150,6 +186,7 @@ function CurrentPatient() {
 
     function handleCriticalsSubmit(event, data) {
         event.preventDefault();
+        // findForm(event.target)
         // console.log(event.target.parentElement.parentElement.parentElement)
         // console.log(data)
         // setCriticalWarning({ ...criticalWarnings, pending: false })
@@ -160,10 +197,11 @@ function CurrentPatient() {
         API.updateCriticalWarnings(id, data)
             // .then(setCriticalWarning(data))
             // .then(setCriticalWarning({...criticalWarnings}))
-            .then(socket.emit("update"))
-            .then(event.target.parentElement.parentElement.reset())
             // .then(event.target.parentElement.parentElement.reset())
-            .then(loadById(id))
+            // .then(clearForm(event.target))
+            .then(socket.emit("update"))
+        // .then(event.target.parentElement.parentElement.reset())
+        // .then(loadById(id))
     }
 
     // function initEtaUpdate() {
@@ -179,12 +217,15 @@ function CurrentPatient() {
     function handleEtaSubmit(event, data) {
         // console.log(data)
         event.preventDefault()
-        console.log(event.target.parentElement)
+        // findForm(event.target)
+        // console.log(event.target.parentElement)
+
         API.updateETA(id, { time: data.time })
-            .then(socket.emit("update"))
-            .then(event.target.parentElement.reset())
+        .then(clearForm(event.target))
+        // .then(event.target.parentElement.reset())
+        .then(socket.emit("update"))
             // .then(setEta({ pending: false }))
-            .then(loadById(id))
+            // .then(loadById(id))
     }
 
     // function initPatientInformation() {
@@ -198,41 +239,48 @@ function CurrentPatient() {
 
     function handlePtInformationSubmit(event, data) {
         event.preventDefault()
+        // console.log(event.target.parentElement.parentElement.parentElement)
+        // console.log(event.target.parentElement.parentElement)
         API.updatePtInformation(id, data)
             .then(socket.emit("update"))
-            .then(event.target.parentElement.parentElement.reset())
-            // .then(setPatientInformation({ pending: false }))
-            .then(loadById(id))
+            .then(clearForm(event.target))
+        // .then(event.target.parentElement.parentElement.parentElement.reset())
+        // .then(setPatientInformation({ pending: false }))
+        // .then(loadById(id))
     }
+
+    socket.on("hello", () => {
+        loadById(id)
+    })
 
     return (
         <Container style={{ paddingTop: "2rem" }}>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
                     <Typography variant="h2" style={{ color: "#FFD400" }}>Welcome EMS User</Typography>
-                    <Typography variant="h4" style={{ color: "#B7D5D4" }}>Enter updates below to keep the hospital informed about your patient</Typography>
+                    <Typography variant="h4" style={{ padding: "0 10rem", color: "#B7D5D4" }}>Enter updates below to keep the hospital informed about your patient</Typography>
                 </Grid>
             </Grid>
             <Grid container
-            className={classes.toolbar}>
-                <EMSToolbar 
+                className={classes.toolbar}>
+                <EMSToolbar
                     // etaInputChange={handleEtaInput}
                     etaSubmit={handleEtaSubmit}
                     criticalSubmit={handleCriticalsSubmit}
                     vitalSubmit={handleVitalsSubmit}
-                    ptInfoSubmit ={handlePtInformationSubmit}
+                    ptInfoSubmit={handlePtInformationSubmit}
                 />
             </Grid>
             <Grid container>
-                <Grid item xs = {12}>
-                {ptInfo.data ? (
+                <Grid item xs={12}>
+                    {ptInfo.data ? (
                         <PatientCard patient={ptInfo.data} />
 
                     ) : (
-                    <Typography variant="h4">
-                        Loading patient information, please wait...
-                    </Typography>
-                    )
+                            <Typography variant="h4">
+                                Loading patient information, please wait...
+                            </Typography>
+                        )
                     }
                 </Grid>
             </Grid>

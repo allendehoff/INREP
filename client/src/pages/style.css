@@ -12,3 +12,13 @@
     /* display: flex; */
     justify-content: space-around;
 }
+.submitButton {
+    padding: 8px 22px;
+    font-size: 0.9375rem;
+    min-width: 64px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    /* font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+    /* font-weight: 500; */
+    line-height: 1.75;
+    border-radius: 4px;
+}
