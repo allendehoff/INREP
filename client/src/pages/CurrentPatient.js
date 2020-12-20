@@ -22,6 +22,7 @@ import PatientCard from "../components/PatientCard/PatientCard"
 // import UpdateInformation from "../components/PatientInformation/UpdateInformation"
 // import PatientInformationForm from "../components/PatientInformation/PatientInformationForm"
 import EMSToolbar from "../components/EMSToolbar/EMSToolbar"
+import EMSPatientCard from "../components/EMSPatientCard/EMSPatientCard"
 
 import { useParams } from "react-router-dom"
 import API from "../utils/API"
@@ -153,26 +154,26 @@ function CurrentPatient() {
     //     // return form
     // }
 
-    function handleVitalsSubmit(event, data) {
-        // let form
-        event.preventDefault();
-        // if (event.target.parentElement.parentElement.parentElement === )
-        // console.log(event.target.parentElement.parentElement.nodeName)
-        // event.target.parentElement.parentElement.parentElement.reset()
-        // console.log(data)
-        if (data.HR !== "Not Reported") {
-            API.updateVitals(id, data)
-                .then(clearForm(event.target))
-                .then(socket.emit("update"))
-            // .then(event.target.parentElement.parentElement.parentElement.reset())
-            // .then(console.log(event.target.parentElement.parentElement.parentElement))
-            // .then(setVitals(blankVitals))
-            // .then(loadById(id))
-        }
-        // .exec(loadById(id))
-        // console.log(vitals)
-        // console.log("here")
-    }
+    // function handleVitalsSubmit(event, data) {
+    //     // let form
+    //     event.preventDefault();
+    //     // if (event.target.parentElement.parentElement.parentElement === )
+    //     // console.log(event.target.parentElement.parentElement.nodeName)
+    //     // event.target.parentElement.parentElement.parentElement.reset()
+    //     // console.log(data)
+    //     if (data.HR !== "Not Reported") {
+    //         API.updateVitals(id, data)
+    //             .then(clearForm(event.target))
+    //             .then(socket.emit("update"))
+    //         // .then(event.target.parentElement.parentElement.parentElement.reset())
+    //         // .then(console.log(event.target.parentElement.parentElement.parentElement))
+    //         // .then(setVitals(blankVitals))
+    //         // .then(loadById(id))
+    //     }
+    //     // .exec(loadById(id))
+    //     // console.log(vitals)
+    //     // console.log("here")
+    // }
 
     // function initCriticals() {
     //     setCriticalWarning({ ...criticalWarnings, pending: true })
@@ -184,25 +185,25 @@ function CurrentPatient() {
     //     setCriticalWarning({ ...criticalWarnings, [name]: checked })
     // }
 
-    function handleCriticalsSubmit(event, data) {
-        event.preventDefault();
-        // findForm(event.target)
-        // console.log(event.target.parentElement.parentElement.parentElement)
-        // console.log(data)
-        // setCriticalWarning({ ...criticalWarnings, pending: false })
-        // // console.log(criticalWarnings)
-        // // const warningsString = JSON.stringify(criticalWarnings)
-        // // console.log(warningsString)
+    // function handleCriticalsSubmit(event, data) {
+    //     event.preventDefault();
+    //     // findForm(event.target)
+    //     // console.log(event.target.parentElement.parentElement.parentElement)
+    //     // console.log(data)
+    //     // setCriticalWarning({ ...criticalWarnings, pending: false })
+    //     // // console.log(criticalWarnings)
+    //     // // const warningsString = JSON.stringify(criticalWarnings)
+    //     // // console.log(warningsString)
 
-        API.updateCriticalWarnings(id, data)
-            // .then(setCriticalWarning(data))
-            // .then(setCriticalWarning({...criticalWarnings}))
-            // .then(event.target.parentElement.parentElement.reset())
-            // .then(clearForm(event.target))
-            .then(socket.emit("update"))
-        // .then(event.target.parentElement.parentElement.reset())
-        // .then(loadById(id))
-    }
+    //     API.updateCriticalWarnings(id, data)
+    //         // .then(setCriticalWarning(data))
+    //         // .then(setCriticalWarning({...criticalWarnings}))
+    //         // .then(event.target.parentElement.parentElement.reset())
+    //         // .then(clearForm(event.target))
+    //         .then(socket.emit("update"))
+    //     // .then(event.target.parentElement.parentElement.reset())
+    //     // .then(loadById(id))
+    // }
 
     // function initEtaUpdate() {
     //     setEta({ ...eta, pending: true })
@@ -214,19 +215,19 @@ function CurrentPatient() {
     //     // console.log(eta.time)
     // }
 
-    function handleEtaSubmit(event, data) {
-        // console.log(data)
-        event.preventDefault()
-        // findForm(event.target)
-        // console.log(event.target.parentElement)
+    // function handleEtaSubmit(event, data) {
+    //     // console.log(data)
+    //     event.preventDefault()
+    //     // findForm(event.target)
+    //     // console.log(event.target.parentElement)
 
-        API.updateETA(id, { time: data.time })
-        .then(clearForm(event.target))
-        // .then(event.target.parentElement.reset())
-        .then(socket.emit("update"))
-            // .then(setEta({ pending: false }))
-            // .then(loadById(id))
-    }
+    //     API.updateETA(id, { time: data.time })
+    //         .then(clearForm(event.target))
+    //         // .then(event.target.parentElement.reset())
+    //         .then(socket.emit("update"))
+    //     // .then(setEta({ pending: false }))
+    //     // .then(loadById(id))
+    // }
 
     // function initPatientInformation() {
     //     setPatientInformation({ ...patientInformation, pending: true })
@@ -237,17 +238,17 @@ function CurrentPatient() {
     //     setPatientInformation({ ...patientInformation, [name]: value })
     // }
 
-    function handlePtInformationSubmit(event, data) {
-        event.preventDefault()
-        // console.log(event.target.parentElement.parentElement.parentElement)
-        // console.log(event.target.parentElement.parentElement)
-        API.updatePtInformation(id, data)
-            .then(socket.emit("update"))
-            .then(clearForm(event.target))
-        // .then(event.target.parentElement.parentElement.parentElement.reset())
-        // .then(setPatientInformation({ pending: false }))
-        // .then(loadById(id))
-    }
+    // function handlePtInformationSubmit(event, data) {
+    //     event.preventDefault()
+    //     // console.log(event.target.parentElement.parentElement.parentElement)
+    //     // console.log(event.target.parentElement.parentElement)
+    //     API.updatePtInformation(id, data)
+    //         .then(socket.emit("update"))
+    //         .then(clearForm(event.target))
+    //     // .then(event.target.parentElement.parentElement.parentElement.reset())
+    //     // .then(setPatientInformation({ pending: false }))
+    //     // .then(loadById(id))
+    // }
 
     socket.on("hello", () => {
         loadById(id)
@@ -261,7 +262,22 @@ function CurrentPatient() {
                     <Typography variant="h4" style={{ padding: "0 10rem", color: "#B7D5D4" }}>Enter updates below to keep the hospital informed about your patient</Typography>
                 </Grid>
             </Grid>
-            <Grid container
+            {ptInfo.data ? (
+                <EMSPatientCard
+                    // etaSubmit={handleEtaSubmit}
+                    // criticalSubmit={handleCriticalsSubmit}
+                    // vitalSubmit={handleVitalsSubmit}
+                    // ptInfoSubmit={handlePtInformationSubmit}
+                    // clearForm={clearForm}
+                    patient={ptInfo.data}
+                />
+            ) : (
+                    <Typography variant="h4">
+                        Loading patient information, please wait...
+                    </Typography>
+                )
+            }
+            {/* <Grid container
                 className={classes.toolbar}>
                 <EMSToolbar
                     // etaInputChange={handleEtaInput}
@@ -283,7 +299,7 @@ function CurrentPatient() {
                         )
                     }
                 </Grid>
-            </Grid>
+            </Grid> */}
 
             {/* <Row>
                 <Col>

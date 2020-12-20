@@ -9,17 +9,24 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import { Form } from "react-bootstrap";
+
+import { useParams } from "react-router-dom"
+import API from "../../utils/API"
+
+import io from "socket.io-client"
+const socket = io()
 // import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const useStyles = makeStyles((theme) => ({
     formgroup: {
         display: "block"
-    }
+    },
 }));
 
 function CriticalWarnSelect(props) {
     const classes = useStyles();
+    const { id } = useParams()
 
     const [checked, setChecked] = useState({
         CPR: false,
@@ -44,8 +51,24 @@ function CriticalWarnSelect(props) {
         // console.log(checked)
     };
 
-    const handleSubmit = (event, data) => {
-        props.onSubmit(event, data)
+    function handleCriticalsSubmit(event, data) {
+        event.preventDefault();
+        // findForm(event.target)
+        // console.log(event.target.parentElement.parentElement.parentElement)
+        // console.log(data)
+        // setCriticalWarning({ ...criticalWarnings, pending: false })
+        // // console.log(criticalWarnings)
+        // // const warningsString = JSON.stringify(criticalWarnings)
+        // // console.log(warningsString)
+
+        API.updateCriticalWarnings(id, data)
+            // .then(setCriticalWarning(data))
+            // .then(setCriticalWarning({...criticalWarnings}))
+            // .then(event.target.parentElement.parentElement.reset())
+            // .then(clearForm(event.target))
+            .then(socket.emit("update"))
+        // .then(event.target.parentElement.parentElement.reset())
+        // .then(loadById(id))
     }
 
     // function clearCheckBoxes() {
@@ -65,7 +88,7 @@ function CriticalWarnSelect(props) {
                                     checked={checked.CPR}
                                     onChange={handleChange}
                                     name="CPR"
-                                    color="secondary"
+                                    color="primary"
                                 />
                             }
                             label="CPR IN PROGRESS"
@@ -125,7 +148,7 @@ function CriticalWarnSelect(props) {
                             }
                             label="Fall With Blood Thinners"
                         />
-                    <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, checked)}>Submit</Button>
+                    <Button size="large" variant="contained" color="primary" onClick={(event) => handleCriticalsSubmit(event, checked)}>Submit</Button>
                 </FormGroup>
             </FormControl>
         </div>

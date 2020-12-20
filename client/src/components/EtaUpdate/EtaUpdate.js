@@ -7,6 +7,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 // import Grid from '@material-ui/core/Grid'
 
+import { useParams } from "react-router-dom"
+import API from "../../utils/API"
+
+import io from "socket.io-client"
+const socket = io()
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
@@ -19,12 +25,16 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         marginBottom: "0.3rem",
-        marginRight: "0.3rem"
+        marginRight: "0.3rem",
+        backgroundColor:"white",
+        borderRadius: "4px"
     }
 }));
 
 function EtaUpdate(props) {
     const classes = useStyles()
+    const { id } = useParams()
+
     const [eta, setEta] = useState({
         time: ""
     })
@@ -34,9 +44,35 @@ function EtaUpdate(props) {
         setEta({ ...eta, [name]: value })
         // console.log(eta.time)
     }
-    function handleSubmit(event, data) {
+
+    function handleEtaSubmit(event, data) {
         // console.log(data)
-        props.onSubmit(event, data)
+        event.preventDefault()
+        // findForm(event.target)
+        // console.log(event.target.parentElement)
+
+        API.updateETA(id, { time: data.time })
+            .then(clearForm(event.target))
+            // .then(event.target.parentElement.reset())
+            .then(socket.emit("update"))
+        // .then(setEta({ pending: false }))
+        // .then(loadById(id))
+    }
+
+    function clearForm(target) {
+        let form
+        // let parent = ".parentElement"
+        if (target.parentElement.nodeName === "FORM") {
+            form = target.parentElement
+        } else if (target.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement.parentElement
+        }
+        return form.reset()
+        // return form
     }
     return (
         <form className={classes.root, classes.form} onSubmit={props.etaSubmit}>
@@ -53,7 +89,7 @@ function EtaUpdate(props) {
                             name="time"
                         />
                     </div>
-                    <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, eta)}>Submit</Button>
+                    <Button size="large" variant="contained" color="primary" onClick={(event) => handleEtaSubmit(event, eta)}>Submit</Button>
                 </form>
         // <Form
         //     onSubmit={props.onSubmit}

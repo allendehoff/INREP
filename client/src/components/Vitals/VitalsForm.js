@@ -7,6 +7,12 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { Typography } from "@material-ui/core";
 
+import { useParams } from "react-router-dom"
+import API from "../../utils/API"
+
+import io from "socket.io-client"
+const socket = io()
+
 const dayjs = require("dayjs")
 
 const useStyles = makeStyles((theme) => ({
@@ -21,13 +27,15 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         marginBottom: "0.3rem",
-        marginRight: "0.3rem"
+        marginRight: "0.3rem",
+        backgroundColor: "white",
+        borderRadius: "4px"
     },
     submitButton: {
         padding: "8px 22px",
         fontSize: "0.9375rem",
         minWidth: "64px",
-        backgroundColor:"blue",
+        backgroundColor: "blue",
         // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         /* font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
         /* font-weight: 500; */
@@ -52,6 +60,7 @@ const blankVitals = {
 
 function VitalsForm(props) {
     const classes = useStyles();
+    const { id } = useParams()
 
     const [vitals, setVitals] = useState(blankVitals)
 
@@ -68,9 +77,46 @@ function VitalsForm(props) {
     // function updateTime() {
     // }
 
-    function handleSubmit(event, data) {
+    // function handleSubmit(event, data) {
+    //     // console.log(data)
+    //     props.onSubmit(event, data)
+    // }
+
+    function clearForm(target) {
+        let form
+        // let parent = ".parentElement"
+        if (target.parentElement.nodeName === "FORM") {
+            form = target.parentElement
+        } else if (target.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement.parentElement
+        }
+        return form.reset()
+        // return form
+    }
+
+    function handleVitalsSubmit(event, data) {
+        // let form
+        event.preventDefault();
+        // if (event.target.parentElement.parentElement.parentElement === )
+        // console.log(event.target.parentElement.parentElement.nodeName)
+        // event.target.parentElement.parentElement.parentElement.reset()
         // console.log(data)
-        props.onSubmit(event, data)
+        if (data.HR !== "Not Reported") {
+            API.updateVitals(id, data)
+                .then(clearForm(event.target))
+                .then(socket.emit("update"))
+                // .then(event.target.parentElement.parentElement.parentElement.reset())
+                // .then(console.log(event.target.parentElement.parentElement.parentElement))
+                .then(setVitals(blankVitals))
+            // .then(loadById(id))
+        }
+        // .exec(loadById(id))
+        // console.log(vitals)
+        // console.log("here")
     }
 
     return (
@@ -126,7 +172,7 @@ function VitalsForm(props) {
 
                 </Grid>
                 {/* <Typography className={classes.submitButton}>SUBMIT</Typography> */}
-                <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, vitals)}>Submit</Button>
+                <Button size="large" variant="contained" color="primary" onClick={(event) => handleVitalsSubmit(event, vitals)}>Submit</Button>
             </Grid>
         </form >
     );

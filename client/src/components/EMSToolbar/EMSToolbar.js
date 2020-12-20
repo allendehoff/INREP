@@ -56,16 +56,20 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         display: 'flex',
         height: 300,
+        border: "2px solid black",
+        borderRadius: "5px",
+        marginBottom:"1rem",
+        backgroundColor:"lightgray"
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
     },
     tabpanel: {
         display: "block",
-        overflow: "auto"
+        overflow: "auto",
     },
     input: {
-        margin: "0 0.5rem"
+        margin: "0 0.5rem",
     },
     inputContainer: {
         marginBottom: "1rem"
@@ -81,7 +85,7 @@ function EMSToolbar(props) {
     };
 
     return (
-        <div className={classes.root} style={{ backgroundColor: "rgb(193, 224, 247)", }}>
+        <div className={classes.root} >
             <Tabs
                 orientation="vertical"
                 variant="scrollable"

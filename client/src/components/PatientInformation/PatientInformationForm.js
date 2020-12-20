@@ -6,10 +6,17 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
+import { useParams } from "react-router-dom"
+import API from "../../utils/API"
+
+
+import io from "socket.io-client"
+const socket = io()
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(1),
+            margin: theme.spacing(2),
             width: '25ch',
         },
     },
@@ -18,12 +25,14 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         marginBottom: "0.3rem",
-        marginRight: "0.3rem"
+        backgroundColor:"white",
+        borderRadius: "4px"
     }
 }));
 
 function PatientInformationForm(props) {
     const classes = useStyles()
+    const { id } = useParams()
 
     const [patientInformation, setPatientInformation] = useState({
         age: "Not Reported",
@@ -39,9 +48,32 @@ function PatientInformationForm(props) {
         setPatientInformation({ ...patientInformation, [name]: value })
     }
 
-    function handleSubmit(event, data) {
-        // console.log(data)
-        props.onSubmit(event, data)
+    function handlePtInformationSubmit(event, data) {
+        event.preventDefault()
+        // console.log(event.target.parentElement.parentElement.parentElement)
+        // console.log(event.target.parentElement.parentElement)
+        API.updatePtInformation(id, data)
+            .then(socket.emit("update"))
+            .then(clearForm(event.target))
+        // .then(event.target.parentElement.parentElement.parentElement.reset())
+        // .then(setPatientInformation({ pending: false }))
+        // .then(loadById(id))
+    }
+
+    function clearForm(target) {
+        let form
+        // let parent = ".parentElement"
+        if (target.parentElement.nodeName === "FORM") {
+            form = target.parentElement
+        } else if (target.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement
+        } else if (target.parentElement.parentElement.parentElement.parentElement.nodeName === "FORM") {
+            form = target.parentElement.parentElement.parentElement.parentElement
+        }
+        return form.reset()
+        // return form
     }
 
     return (
@@ -99,7 +131,7 @@ function PatientInformationForm(props) {
                         name="from"
                         onChange={handlePtInformationChange} />
                 </Grid>
-                <Button size="large" variant="contained" color="primary" onClick={(event) => handleSubmit(event, patientInformation)}>Submit</Button>
+                <Button size="large" variant="contained" color="primary" onClick={(event) => handlePtInformationSubmit(event, patientInformation)}>Submit</Button>
             </Grid>
         </form >
     )
