@@ -29,12 +29,15 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: "2rem",
     },
     form: {
-        backgroundColor: "lightgray",
+        backgroundColor: "#E3E0DD",
         padding: "1rem",
-        color: "black"
+        color: "black",
+        borderRadius:"5px"
     },
     input: {
-        margin: "0 0.5rem"
+        margin: "0 0.5rem",
+        // backgroundColor: "white",
+        borderRadius: "4px",
     },
     buttonDiv: {
         justifyItems: "center"
@@ -68,10 +71,12 @@ function PtInitForm(props) {
 
         // if (navigator.onLine){
 
-        API.createPatient(ptInit).then((data) => {
-            // console.log(data)
-            handleReroute(data.data._id)
-        }).then(socket.emit("update"))
+        API.createPatient(ptInit)
+            .then((data) => {
+                // console.log(data)
+                handleReroute(data.data._id)
+            })
+            .then(socket.emit("update"))
         // } else {console.log("offlineoffline")}
 
         // .then(API.findMostRecentPatient()

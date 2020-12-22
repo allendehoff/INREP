@@ -53,13 +53,13 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        // backgroundColor: theme.palette.background.paper,
         display: 'flex',
         height: 300,
         border: "2px solid black",
         borderRadius: "5px",
         marginBottom:"1rem",
-        backgroundColor:"lightgray"
+        backgroundColor:"#F6F5F4"
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
@@ -94,13 +94,13 @@ function EMSToolbar(props) {
                 // aria-label="Vertical tabs example"
                 className={classes.tabs}
             >
-                <Tab label="Update ETA" {...a11yProps(0)} style={{ backgroundColor: "rgb(73, 72, 91)" }} />
+                <Tab label="Update ETA" {...a11yProps(0)} style={{ backgroundColor: "white" }} />
                 <Tab label="Critical Warnings" {...a11yProps(1)} style={{ backgroundColor: "red" }} />
-                <Tab label="Update Vitals" {...a11yProps(2)} style={{ backgroundColor: "rgb(148, 65, 71)" }} />
+                <Tab label="Update Vitals" {...a11yProps(2)} style={{ backgroundColor: "rgb(234, 186, 107)" }} />
                 <Tab label="Patient Information" {...a11yProps(3)} style={{ backgroundColor: "rgb(169, 197, 160)" }} />
                 <Tab label="Interventions" {...a11yProps(4)} style={{ backgroundColor: "rgb(220, 96, 46)" }} />
                 <Tab label="History" {...a11yProps(5)} style={{ backgroundColor: "rgb(175, 162, 255)" }} />
-                <Tab label="Allerigies" {...a11yProps(6)} style={{ backgroundColor: "rgb(105, 79, 93)" }} />
+                <Tab label="Allerigies" {...a11yProps(6)} style={{ backgroundColor: "rgb(158, 208, 230)" }} />
             </Tabs>
             <TabPanel value={value} index={0} >
                 <EtaUpdate onSubmit={props.etaSubmit} />

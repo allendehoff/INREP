@@ -1,5 +1,6 @@
 import React from "react"
 // import { Row, Col } from "react-bootstrap"
+import "./style.css"
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     header: {
         padding: "2rem 0 4rem 0",
         textAlign: "center",
-        borderBottom: "5px solid #FFD400",
+        // borderBottom: "5px solid #FFD400",
         marginBottom: "3rem"
     },
     subheader: {
@@ -53,11 +54,17 @@ function EMS() {
         <Container>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
-                    <Typography variant="h2" style={{ color: "#FFD400" }}>Welcome EMS User</Typography>
+                    <Typography variant="h2" 
+                    className="heading"
+                    // style={{ color: "#FFD400" }}
+                    >Welcome EMS User</Typography>
                     {/* <h4 style={{ color: "#B7D5D4" }}>A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</h4> */}
                 </Grid>
                 <Grid item xs={12} className={classes.subheader}>
-                    <Typography variant="h5" style={{ color: "white" }}>What would you like to do?</Typography>
+                    <Typography variant="h5" 
+                    className="subSubheading"
+                    // style={{ color: "white" }}
+                    >What would you like to do?</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container justify="center" spacing={3}>

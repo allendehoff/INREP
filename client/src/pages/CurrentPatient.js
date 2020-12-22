@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import "./style.css"
 // import { Component } from "react"
 // import {  Row, Col } from "react-bootstrap"
 // import Card from "react-bootstrap/Card"
@@ -38,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     header: {
-        padding: "2rem 0 4rem 0",
+        padding: "1rem 0 2rem 0",
         textAlign: "center",
-        borderBottom: "5px solid #FFD400",
+        // borderBottom: "5px solid #FFD400",
         marginBottom: "3rem"
     },
     subheader: {
@@ -258,8 +259,14 @@ function CurrentPatient() {
         <Container style={{ paddingTop: "2rem" }}>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
-                    <Typography variant="h2" style={{ color: "#FFD400" }}>Welcome EMS User</Typography>
-                    <Typography variant="h4" style={{ padding: "0 10rem", color: "#B7D5D4" }}>Enter updates below to keep the hospital informed about your patient</Typography>
+                    <Typography variant="h2" 
+                    className="heading"
+                    // style={{ color: "#FFD400" }}
+                    >Welcome EMS User</Typography>
+                    <Typography variant="h4" 
+                    className="subheading"
+                    // style={{ padding: "0 10rem", color: "#B7D5D4" }}
+                    >Enter updates below to keep the hospital informed about your patient</Typography>
                 </Grid>
             </Grid>
             {ptInfo.data ? (

@@ -23,7 +23,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: "rgb(193, 224, 247)",
+        backgroundColor: "#E3E0DD",
         border: "1px solid black",
         borderRadius: "5px",
         marginBottom: "2rem"
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: "1px solid black"
     },
     warningContainer: {
-        padding: "2rem 0",
+        // padding: "2rem 0",
         alignItems: "center"
     },
     warningHead: {
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
+        borderLeft: "1px solid black"
     },
     etaField: {
         border: "5px solid black",
@@ -65,11 +66,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: theme.typography.fontWeight,
     },
     vitalsHead: {
-        backgroundColor: "rgb(148, 65, 71)"
+        backgroundColor: "rgb(234, 186, 107)"
         // "#004777"
     },
     vitalsDetails: {
-        backgroundColor: "rgb(148, 65, 71, 0.5)"
+        backgroundColor: "rgb(234, 186, 107, 0.5)"
     },
     ptInfoHead: {
         backgroundColor: "rgb(169, 197, 160)"
@@ -90,10 +91,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "rgb(175, 162, 255, 0.5)"
     },
     allergiesHead: {
-        backgroundColor: "rgb(105, 79, 93)"
+        backgroundColor: "rgb(158, 208, 230)"
     },
     allergiesDetail: {
-        backgroundColor: "rgb(105, 79, 93, 0.5)"
+        backgroundColor: "rgb(158, 208, 230, 0.5)"
     },
     paper: {
         padding: theme.spacing(2),
@@ -128,7 +129,7 @@ function EMSPatientCard(props) {
         <div className={classes.root}>
             <Grid container>
                 <Grid item xs={12} className={classes.respondingUnit}>
-                    <Typography> Unit Responding: <span>{props.patient.respondingUnit}</span></Typography>
+                    <Typography> UNIT RESPONDING: <span>{props.patient.respondingUnit}</span></Typography>
                 </Grid>
                 <Grid container className={classes.header}>
                     <Grid item xs={3} className={classes.etaField}>
@@ -140,9 +141,23 @@ function EMSPatientCard(props) {
                                 <Typography variant="h6">CRITICAL WARNINGS</Typography>
                             </Grid>
                             <Grid item xs={8} className={classes.warningField}>
-                                {warningKeys.map(warning => {
+                            <Grid item id="alert" xs={12} className={classes.warningField}>
+                                        {warningKeys.map(alert => {
+                                            if ((alert === "CPR") || (alert === "STROKE") || (alert=== "TRAUMA1")) {
+                                                return <Paper key={alert} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "0.5rem", margin: "0.5rem 0", minWidth:"105px", textAlign:"center"  }}>{alert}</Paper>
+                                            }
+                                        })}
+                                    </Grid>
+                                    <Grid item id="warning" xs={12} className={classes.warningField}>
+                                        {warningKeys.map(warning => {
+                                            if ((warning === "TRAUMA2") || (warning === "INTUBATED") || (warning === "STEMI")) {
+                                                return <Paper key={warning} style={{ backgroundColor: "yellow", color: "black", borderRadius: "2px", padding: "0.5rem", margin: "0.5rem 0", minWidth:"105px", textAlign:"center" }}>{warning}</Paper>
+                                            }
+                                        })}
+                                    </Grid>
+                                {/* {warningKeys.map(warning => {
                                     return <Paper key={warning} style={{ backgroundColor: "red", color: "white", borderRadius: "2px", padding: "0.5rem", margin: "0.5rem 0" }}>{warning}</Paper>
-                                })}
+                                })} */}
                             </Grid>
                         </Grid>
                     </Grid>

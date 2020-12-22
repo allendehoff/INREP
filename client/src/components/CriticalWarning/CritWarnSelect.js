@@ -30,11 +30,11 @@ function CriticalWarnSelect(props) {
 
     const [checked, setChecked] = useState({
         CPR: false,
-        stroke: false,
-        trauma1: false,
-        trauma2: false,
-        intubated: false,
-        fallWithThinners: false
+        STROKE: false,
+        TRAUMA1: false,
+        TRAUMA2: false,
+        INTUBATED: false,
+        STEMI: false
     })
 
     // const allFalse = {
@@ -88,7 +88,7 @@ function CriticalWarnSelect(props) {
                                     checked={checked.CPR}
                                     onChange={handleChange}
                                     name="CPR"
-                                    color="primary"
+                                    color="secondary"
                                 />
                             }
                             label="CPR IN PROGRESS"
@@ -98,7 +98,7 @@ function CriticalWarnSelect(props) {
                                 <Checkbox
                                     checked={checked.stroke}
                                     onChange={handleChange}
-                                    name="stroke"
+                                    name="STROKE"
                                     color="secondary"
                                 />
                             }
@@ -109,7 +109,7 @@ function CriticalWarnSelect(props) {
                                 <Checkbox
                                     checked={checked.trauma1}
                                     onChange={handleChange}
-                                    name="trauma1"
+                                    name="TRAUMA1"
                                     color="secondary"
                                 />
                             }
@@ -120,7 +120,7 @@ function CriticalWarnSelect(props) {
                                 <Checkbox
                                     checked={checked.trauma2}
                                     onChange={handleChange}
-                                    name="trauma2"
+                                    name="TRAUMA2"
                                     color="secondary"
                                 />
                             }
@@ -131,7 +131,7 @@ function CriticalWarnSelect(props) {
                                 <Checkbox
                                     checked={checked.intubated}
                                     onChange={handleChange}
-                                    name="intubated"
+                                    name="INTUBATED"
                                     color="secondary"
                                 />
                             }
@@ -140,13 +140,13 @@ function CriticalWarnSelect(props) {
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    checked={checked.fallWithThinners}
+                                    checked={checked.STEMI}
                                     onChange={handleChange}
-                                    name="fallWithThinners"
+                                    name="STEMI"
                                     color="secondary"
                                 />
                             }
-                            label="Fall With Blood Thinners"
+                            label="STEMI ALERT"
                         />
                     <Button size="large" variant="contained" color="primary" onClick={(event) => handleCriticalsSubmit(event, checked)}>Submit</Button>
                 </FormGroup>

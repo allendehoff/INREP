@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 // import Button from '@material-ui/core/Button'
 // import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from "@material-ui/core";
 // import { TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     header: {
         padding: "2rem 0 4rem 0",
         textAlign: "center",
-        borderBottom: "5px solid #FFD400",
+        // borderBottom: "5px solid #FFD400",
         marginBottom: "3rem"
     },
     subheader: {
@@ -38,11 +39,21 @@ function NewPatient(props) {
         <Container>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
-                    <h1 style={{ color: "#FFD400" }}>Welcome EMS User</h1>
+                    <Typography
+                        variant="h2"
+                        className="heading"
+                    >Welcome EMS User
+                    </Typography>
+                    {/* <h1 style={{ color: "#FFD400" }}></h1> */}
                     {/* <h4 style={{ color: "#B7D5D4" }}>A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</h4> */}
                 </Grid>
                 <Grid item xs={12} className={classes.subheader}>
-                    <h2 style={{ color: "white" }}>What unit is responding to this incident?</h2>
+                    <Typography
+                        variant="h5"
+                        className="subSubheading"
+                    // style={{ color: "white" }}
+                    >What unit is responding to this incident?</Typography>
+                    {/* <h2 style={{ color: "white" }}>What unit is responding to this incident?</h2> */}
                 </Grid>
                 <Grid item xs={12}>
                     <PtInitForm />

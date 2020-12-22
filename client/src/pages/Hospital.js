@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 // import { Row, Col } from "react-bootstrap"
+import "./style.css"
 
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -20,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     header: {
-        padding: "2rem 0 4rem 0",
+        padding: "1rem 0 2rem 0",
         textAlign: "center",
-        borderBottom: "5px solid #FFD400",
+        // borderBottom: "5px solid #003249",
         marginBottom: "3rem"
     },
 }))
@@ -69,8 +70,14 @@ function Hospital() {
         <Container style={{ paddingTop: "2rem" }}>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
-                    <Typography variant="h2" style={{ color: "#FFD400" }}>Welcome Hospital User</Typography>
-                    <Typography variant="h4" style={{ color: "#B7D5D4" }}>Here are the most recent updates regarding your incoming patients from EMS</Typography>
+                    <Typography variant="h2"
+                    className="heading"
+                    //  style={{ color: "#FFD400", fontWeight: "600", borderBottom:"2px solid #FFD400", paddingBottom:"1rem" }}
+                     >Welcome Hospital User</Typography>
+                    <Typography variant="h4" 
+                    className="subheading"
+                    // style={{ color: "#FFD400", paddingTop:"1rem"}}
+                    >Here are the most recent updates regarding your incoming patients from EMS</Typography>
                 </Grid>
                 {patients.length ? (
                     <Grid item xs={12}>

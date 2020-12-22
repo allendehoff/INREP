@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     header: {
         padding: "2rem 0 4rem 0",
         textAlign:"center",
-        borderBottom:"5px solid #FFD400",
+        // borderBottom:"5px solid #FFD400",
         marginBottom: "3rem"
     },
     subheader: {
@@ -41,11 +41,20 @@ function Home() {
         <Container>
             <Grid container>
                 <Grid item xs={12} className={classes.header}>
-                    <Typography variant="h2" style={{ color: "#FFD400" }}>Welcome to INREP</Typography>
-                    <Typography variant="h4"style={{ color: "#B7D5D4" }}>A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</Typography>
+                    <Typography variant="h2"
+                    className="heading"
+                    //  style={{ color: "#FFD400" }}
+                     >Welcome to INREP</Typography>
+                    <Typography variant="h4"
+                    className="subheading"
+                    // style={{ color: "#B7D5D4" }}
+                    >A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.subheader}>
-                    <Typography variant="h5" style={{color:"white"}}>To begin, select what type of user you are:</Typography>
+                    <Typography variant="h5" 
+                    className="subSubheading"
+                    // style={{color:"white"}}
+                    >To begin, select what type of user you are:</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <HomeButtonBases style={{width:"80%"}} />

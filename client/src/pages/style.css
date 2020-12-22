@@ -1,3 +1,17 @@
+.heading {
+    color: #FFD400;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #FFD400;
+    padding-bottom: 1rem;
+}
+.subheading {
+    color: #B7D5D4;
+    padding-top:1rem;
+}
+.subSubheading {
+    color:#B7D5D4;
+}
+
 .jumbotron {
     background-color: #007EA7;
     text-align: center;
