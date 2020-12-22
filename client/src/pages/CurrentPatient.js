@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import LoadingBar from "../components/Loading/Loading"
+
 
 // import EtaUpdateButton from "../components/EtaUpdate/##EtaUpdateButton"
 // import EtaUpdate from "../components/EtaUpdate/EtaUpdate"
@@ -279,9 +281,7 @@ function CurrentPatient() {
                     patient={ptInfo.data}
                 />
             ) : (
-                    <Typography variant="h4">
-                        Loading patient information, please wait...
-                    </Typography>
+                    <LoadingBar/>
                 )
             }
             {/* <Grid container

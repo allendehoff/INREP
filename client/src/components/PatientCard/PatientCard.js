@@ -39,17 +39,22 @@ const useStyles = makeStyles((theme) => ({
     },
     warningContainer: {
         // padding: "2rem 0",
-        alignItems: "center"
+        alignItems: "center",
+        padding: "auto 0"
     },
     warningHead: {
         lineHeight: "4.0",
         textAlign: "center",
     },
+    warningHeadText:{
+        padding: "12% 0",
+        borderRight: "1px solid black"
+    },
     warningField: {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
-        borderLeft: "1px solid black"
+        // borderLeft: "1px solid black"
     },
     etaField: {
         border: "5px solid black",
@@ -169,7 +174,7 @@ function PatientCard(props) {
                     <Grid item xs={9}>
                         <Grid container className={classes.warningContainer}>
                             <Grid item xs={4} className={classes.warningHead}>
-                                <Typography variant="h6">CRITICAL WARNINGS</Typography>
+                                <Typography variant="h6" className={classes.warningHeadText}>CRITICAL WARNINGS</Typography>
                             </Grid>
                             <Grid item xs={8} className={classes.warningField}>
                                 <Grid container>

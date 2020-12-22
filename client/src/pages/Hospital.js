@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 // import Welcome from "../components/Welcome/Welcome"
 import PatientCard from "../components/PatientCard/PatientCard"
+import LoadingBar from "../components/Loading/Loading"
+
 import API from "../utils/API"
 
 // import socketIOClient from "socket.io-client"
@@ -91,9 +93,7 @@ function Hospital() {
                         }
                     </Grid>
                 ) : (
-                        <Grid item xs={12}>
-                            <Typography variant="h4">Loading Patients</Typography>
-                        </Grid>
+                        <LoadingBar/>
                     )}
             </Grid>
         </Container>
