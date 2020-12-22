@@ -48,7 +48,9 @@ function Home() {
                     <Typography variant="h4"
                     className="subheading"
                     // style={{ color: "#B7D5D4" }}
-                    >A tool to help EMS providers reliably send reports to Hospitals without worrying about radio signal or cell service</Typography>
+                    >A tool to help EMS providers quickly and reliably send reports to hospitals.
+                    {/* reliably send reports to Hospitals without worrying about radio signal or cell service */}
+                    </Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.subheader}>
                     <Typography variant="h5" 

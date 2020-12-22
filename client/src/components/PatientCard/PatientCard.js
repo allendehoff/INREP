@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     warningHeadText:{
-        padding: "12% 0",
+        padding: "19% 0",
         borderRight: "1px solid black"
     },
     warningField: {

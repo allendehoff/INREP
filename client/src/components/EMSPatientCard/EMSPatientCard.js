@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center"
     },
     warningHeadText:{
-        padding: "12% 0",
+        padding: "19% 0",
         borderRight: "1px solid black"
     },
     warningField: {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
-        borderLeft: "1px solid black"
+        // borderLeft: "1px solid black"
     },
     etaField: {
         border: "5px solid black",
